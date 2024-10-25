@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>NPCs</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6f6c10bc-8c27-4c82-9c95-3eaeca762678" class="page mono"><header><div class="page-header-icon undefined"><img class="icon" src="images_(1).png"/></div><h1 class="page-title">NPCs</h1><p class="page-description"></p></header><div class="page-body"><p id="d93cb681-8221-4b38-a60e-ea2dadec083c" class="">Non-playable characters - hay các nhân vật tồn tại trong trò chơi mà người chơi không thể điều khiển. Những nhân vật này được điều khiển bằng máy tính (có thể sử dụng AI).</p><p id="d16360a6-e662-436d-acc3-a7aa4505511d" class="">Các NPCs có thể tương tác với người chơi, có vai trò đóng góp cho cốt truyện, lối chơi,… của game thông qua các cuộc tương tác, nhiệm vụ, thử thách, phần thưởng,…Từ đó NPCs đóng một vai trò lớn trong game.</p><p id="2ca36135-1e35-476c-a604-df142094a749" class="">
+</p><ul id="fb10cbb5-377b-4429-aeef-e4fdfaf37d32" class="toggle"><li><details open=""><summary>Thông tin về NPCs trong Terraria</summary><ul id="7454151e-c5db-4cde-9d6d-9888817d9bbe" class="toggle"><li><details open=""><summary>Cách tương tác: </summary><figure id="7a3db9ba-0dcf-48f2-a9f6-fefeed7049fb" class="image"><a href="image.png"><img style="width:83px" src="image.png"/></a></figure></details></li></ul><ul id="6237ea2a-333a-45b2-8e2c-19ade84d585e" class="bulleted-list"><li style="list-style-type:disc">Đa số các NPCs là những người bán hàng rong, với một cửa hàng bán buôn khi lựa chọn “Shop”</li></ul><ul id="84b8301d-eb5b-475b-b52b-58bc5dfd4cbe" class="bulleted-list"><li style="list-style-type:disc">Họ sẽ bán item chỉ có thể trả bằng vàng cho người chơi, và ngược lại</li></ul><ul id="1e29804f-4188-4c82-b2a9-39f1ca483855" class="bulleted-list"><li style="list-style-type:disc">Một số NPCs có thể có các chức năng khác</li></ul><ul id="a950cfd4-b193-42b6-aee5-4eab35991241" class="bulleted-list"><li style="list-style-type:disc">Đa số NPCs cũng là town NPCs (những NPCs sống ở trong một thị trấn), những NPCs sẽ chuyển vào những nhà mà người chơi xây và cung cấp - houses</li></ul><ul id="ac91c48a-158b-4b8b-b7ca-c2f42bae41ef" class="bulleted-list"><li style="list-style-type:disc">Mỗi NPC sẽ cần một ngôi nhà, trừ pet và non-pet NPC (các NPC là thú cưng hoặc không phải thú cưng)</li></ul><ul id="3227fc3c-0f89-4c6f-bb33-47e2241e4705" class="bulleted-list"><li style="list-style-type:disc">NPC sẽ giảm tỉ lệ spawn của kẻ địch trong khu vực (&gt;3 NPCs trở lên ở gần) → người chơi nên xây những tòa nhà lớn để tạo ra một khu vực an toàn</li></ul><ul id="f919ff97-ee5e-4cd5-966c-a8bfaa0523c9" class="bulleted-list"><li style="list-style-type:disc">Town NPCs sẽ di chuyển vào ban ngày và ở trong nhà vào ban đêm và các sự kiện</li></ul><ul id="33b29e82-06da-4614-84be-39f328e71c43" class="bulleted-list"><li style="list-style-type:disc">Có máu giới hạn và có thể nhận sát thương và chết (tuy nhiên không chịu sát thương từ fall damage và hồi máu theo thời gian). Riêng The Nurse (y tá) có thể tự hồi máu bản thân và các NPCs. Nếu chết chúng sẽ delay sau một khoảng thời gian cho đến khi có một căn nhà trống</li></ul><ul id="5c80852b-7e77-4da4-a7ac-5937368da29e" class="bulleted-list"><li style="list-style-type:disc">Town NPCs sẽ tấn công kẻ địch ở gần với tư cách là tự vệ với việc mỗi NPC có một cách đánh riêng</li></ul><ul id="ed6d15cf-08bd-4d35-b785-4f9a42ad11f1" class="bulleted-list"><li style="list-style-type:disc">Đôi khi các NPCs sẽ tự nói chuyện với nhau</li></ul></details></li></ul><ul id="e9dcbf4a-5644-4f9e-88d9-b4e03240c27a" class="toggle"><li><details open=""><summary>Số lượng NPC role riêng biệt sẽ tùy vào mỗi phiên bản mà bạn chơi, nhiều nhất sẽ là: 26</summary><p id="e2036327-da20-4e7c-9a52-7e06ded5d6ac" class="">Các tên của từng role NPCs</p><ul id="674e7017-d7df-4fb9-b8fd-d37c5f50a03a" class="toggle"><li><details open=""><summary>Guide</summary><figure id="12a8f238-6219-8044-9544-fd1fa4140168" class="image"><a href="Guide.png"><img style="width:26px" src="Guide.png"/></a></figure><ul id="52ed4e46-ec99-4049-91c6-e25d4b80da26" class="bulleted-list"><li style="list-style-type:disc">Andrew</li></ul><ul id="64b9b3a1-a27e-4328-bd49-aea4b64fadd5" class="bulleted-list"><li style="list-style-type:disc">Asher</li></ul><ul id="d4687b73-9fa1-4148-acf6-29f0963c91af" class="bulleted-list"><li style="list-style-type:disc">Bradley</li></ul><ul id="e140d29b-1e64-4ed6-8111-2e46a42c4040" class="bulleted-list"><li style="list-style-type:disc">Brandon</li></ul><ul id="f53f4d71-7073-449a-b592-20b3c4a5ec7c" class="bulleted-list"><li style="list-style-type:disc">Brett</li></ul><ul id="3b188166-8517-460d-8ebb-f0432b7e0c39" class="bulleted-list"><li style="list-style-type:disc">Brian</li></ul><ul id="e3528219-da78-4dcd-960e-57bdb697ccf3" class="bulleted-list"><li style="list-style-type:disc">Cody</li></ul><ul id="a16b70ee-be94-466e-b661-476fa8e21ed5" class="bulleted-list"><li style="list-style-type:disc">Cole</li></ul><ul id="a64b3082-b04b-4d66-93d6-3e636cbab31a" class="bulleted-list"><li style="list-style-type:disc">Colin</li></ul><ul id="e4ebc992-5c85-433a-a739-386ac21a30f7" class="bulleted-list"><li style="list-style-type:disc">Connor</li></ul><ul id="4eb11874-8309-4f60-a26e-f7286f9dbe15" class="bulleted-list"><li style="list-style-type:disc">Daniel</li></ul><ul id="539f8f96-26f6-4fcc-810c-46df7a837521" class="bulleted-list"><li style="list-style-type:disc">Dylan</li></ul><ul id="85c4b182-13c2-4d30-a6be-6e30de806fe8" class="bulleted-list"><li style="list-style-type:disc">Garrett</li></ul><ul id="48a2d13e-01ea-48e2-b6bb-06b06545e46d" class="bulleted-list"><li style="list-style-type:disc">Harley</li></ul><ul id="a2757cba-3915-4087-8139-0f5f4d4e36e9" class="bulleted-list"><li style="list-style-type:disc">Jack</li></ul><ul id="8b78fb8f-816e-4503-81eb-7bfbd33305e9" class="bulleted-list"><li style="list-style-type:disc">Jacob</li></ul><ul id="63875ccd-2eec-4d19-8fbd-1efdd3934158" class="bulleted-list"><li style="list-style-type:disc">Jake</li></ul><ul id="0ca2816b-cb03-4407-9149-d4b6a672ea87" class="bulleted-list"><li style="list-style-type:disc">Jan</li></ul><ul id="0817126b-79f6-43f8-8a8e-496eebfd3740" class="bulleted-list"><li style="list-style-type:disc">Jeff</li></ul><ul id="68b13d6a-4a82-4301-88f2-2b1b0c3fae8b" class="bulleted-list"><li style="list-style-type:disc">Jeffrey</li></ul><ul id="ca734437-10ce-44df-95b6-eeb90222f146" class="bulleted-list"><li style="list-style-type:disc">Joe</li></ul><ul id="c215f6c4-7103-4077-b4a7-df24149c52af" class="bulleted-list"><li style="list-style-type:disc">Kevin</li></ul><ul id="d905209c-bf3e-4092-9999-ac18e23abfea" class="bulleted-list"><li style="list-style-type:disc">Kyle</li></ul><ul id="c25b1268-2770-451f-8d54-f59dd0d889d5" class="bulleted-list"><li style="list-style-type:disc">Levi</li></ul><ul id="07a60337-0d3d-4470-a0ca-d06b8d55927d" class="bulleted-list"><li style="list-style-type:disc">Logan</li></ul><ul id="d8cbdaec-91d6-4b67-8dd1-58b42f5b4296" class="bulleted-list"><li style="list-style-type:disc">Luke</li></ul><ul id="c9237987-dc00-4922-a0ac-6c59ad1f92fc" class="bulleted-list"><li style="list-style-type:disc">Marty</li></ul><ul id="48365bc2-d0f6-4cb9-a3fc-e14dce115fc9" class="bulleted-list"><li style="list-style-type:disc">Maxwell</li></ul><ul id="cebd492f-eb6f-4950-be7d-8948f9995630" class="bulleted-list"><li style="list-style-type:disc">Ryan</li></ul><ul id="f5d2b771-f76c-4dd2-bbcc-e030696a0ece" class="bulleted-list"><li style="list-style-type:disc">Scott</li></ul><ul id="ad3a57c0-780d-4b63-bf2e-08c6f3741e0c" class="bulleted-list"><li style="list-style-type:disc">Seth</li></ul><ul id="680f6113-86a3-4200-8c67-83df18e5a126" class="bulleted-list"><li style="list-style-type:disc">Steve</li></ul><ul id="7eaa531f-263b-4319-9943-7c54aae5689a" class="bulleted-list"><li style="list-style-type:disc">Tanner</li></ul><ul id="4e81df8e-4bbb-47f3-88de-060ff70fcadc" class="bulleted-list"><li style="list-style-type:disc">Trent</li></ul><ul id="a6898187-1a85-4872-b352-851100bb2f59" class="bulleted-list"><li style="list-style-type:disc">Wyatt</li></ul><ul id="8c16623f-695f-4c02-a3de-9401d3801673" class="bulleted-list"><li style="list-style-type:disc">Zach</li></ul></details></li></ul><ul id="da1b1790-4429-4968-9177-31fe9fe4f42a" class="toggle"><li><details open=""><summary>Merchant</summary><figure id="12a8f238-6219-8017-9839-caf47ed5c17f" class="image"><a href="Merchant.png"><img style="width:30px" src="Merchant.png"/></a></figure><ul id="be3fe98e-c240-42bf-837d-3239b9053f03" class="bulleted-list"><li style="list-style-type:disc">Alfred</li></ul><ul id="01596ff3-8ab1-43e7-98f8-80572b4d383c" class="bulleted-list"><li style="list-style-type:disc">Barney</li></ul><ul id="17ead81b-7a17-469a-8842-09ad8ac10fd6" class="bulleted-list"><li style="list-style-type:disc">Calvin</li></ul><ul id="7dde7fc1-c11c-4648-a7d3-216193eaa598" class="bulleted-list"><li style="list-style-type:disc">Edmund</li></ul><ul id="fa239970-b9c0-43c1-b9d1-e22be01439a7" class="bulleted-list"><li style="list-style-type:disc">Edwin</li></ul><ul id="ad074046-16f9-4baf-a4ae-d8c72392debc" class="bulleted-list"><li style="list-style-type:disc">Eugene</li></ul><ul id="14b0e8ec-195c-48c6-90fd-f30ff751a491" class="bulleted-list"><li style="list-style-type:disc">Finn </li></ul><ul id="c4879333-5aa9-4630-bc98-9c8f47e35367" class="bulleted-list"><li style="list-style-type:disc">Frank</li></ul><ul id="fe8a4a3b-8074-4c7c-be39-5daa3e80a38f" class="bulleted-list"><li style="list-style-type:disc">Frederick</li></ul><ul id="8f371ac5-445d-43fe-a68e-a5c5c2e60fca" class="bulleted-list"><li style="list-style-type:disc">Gilbert</li></ul><ul id="c58f563b-13e8-4465-9807-592ca3177802" class="bulleted-list"><li style="list-style-type:disc">Gus</li></ul><ul id="3b069b84-3f62-4ae6-95cd-645351a011e7" class="bulleted-list"><li style="list-style-type:disc">Harold</li></ul><ul id="cbcbeda6-78c0-4aa4-ae66-ce9403ab47a7" class="bulleted-list"><li style="list-style-type:disc">Howard</li></ul><ul id="12ee3e7c-f376-42b1-a7f5-d372396a3678" class="bulleted-list"><li style="list-style-type:disc">Humphrey</li></ul><ul id="ddfe17c4-1ee7-43f4-9118-a25b90363730" class="bulleted-list"><li style="list-style-type:disc">Isaac</li></ul><ul id="51515772-6ee3-4b7c-86ba-83ed494eaa3a" class="bulleted-list"><li style="list-style-type:disc">Joseph</li></ul><ul id="9dd7920b-7037-4cfc-8075-e00ab17cd83a" class="bulleted-list"><li style="list-style-type:disc">Kristian</li></ul><ul id="7ec07836-f450-4098-9e16-45dfd257810d" class="bulleted-list"><li style="list-style-type:disc">Louis</li></ul><ul id="be67c11d-b013-4a19-9993-f4abae8810b4" class="bulleted-list"><li style="list-style-type:disc">Milton</li></ul><ul id="5b79f8cc-9b68-48db-bed5-679f19cef8ad" class="bulleted-list"><li style="list-style-type:disc">Mortimer</li></ul><ul id="dd498865-0ddc-48c7-ae4c-cf0f26b195e3" class="bulleted-list"><li style="list-style-type:disc">Ralph</li></ul><ul id="01a328f8-cb69-4418-99b8-ef92f1770123" class="bulleted-list"><li style="list-style-type:disc">Seymour</li></ul><ul id="ceee4328-a267-430f-927c-8d13ba4ae616" class="bulleted-list"><li style="list-style-type:disc">Walter</li></ul><ul id="40c3e311-2d62-4713-90b6-1bbf0c7cbc52" class="bulleted-list"><li style="list-style-type:disc">Wilbur</li></ul></details></li></ul><ul id="5f08b485-2a60-4519-9c3b-e46a43705f51" class="toggle"><li><details open=""><summary>Traveling Merchant</summary><figure id="12a8f238-6219-8093-94b1-cc8ec2f39d34" class="image"><a href="Traveling_Merchant.png"><img style="width:36px" src="Traveling_Merchant.png"/></a></figure><ul id="d2b722ff-cbae-46fe-ac73-80c02796ceee" class="bulleted-list"><li style="list-style-type:disc">Abraham</li></ul><ul id="f2eb3841-8975-458f-9f7e-bd92ffbc9249" class="bulleted-list"><li style="list-style-type:disc">Aedan</li></ul><ul id="dbdf3d5f-f1e0-46bb-928c-928e351a2f49" class="bulleted-list"><li style="list-style-type:disc">Aphraim</li></ul><ul id="694704b3-41d0-4d06-87d5-116a8f956e07" class="bulleted-list"><li style="list-style-type:disc">Bohemas</li></ul><ul id="5a64f16b-7131-42bc-8ccc-2b5b2b8ca1bd" class="bulleted-list"><li style="list-style-type:disc">Eladon</li></ul><ul id="ac01ee2e-ef56-40b4-8880-d9cb02546668" class="bulleted-list"><li style="list-style-type:disc">Gallius</li></ul><ul id="4e8e6b46-58e3-4263-a7e7-c8da59dd02db" class="bulleted-list"><li style="list-style-type:disc">Llewellyn</li></ul><ul id="d28a7339-4f70-400d-9b9d-24c9fab63b60" class="bulleted-list"><li style="list-style-type:disc">Mercer</li></ul><ul id="6031c6a1-e77b-4f54-bcec-f20ad4698bf3" class="bulleted-list"><li style="list-style-type:disc">Rawleigh</li></ul><ul id="e49039fd-8b60-430c-9a0a-bf39f7299ba1" class="bulleted-list"><li style="list-style-type:disc">Riley</li></ul><ul id="e257ca19-8904-4e31-988a-593d5ab25ef7" class="bulleted-list"><li style="list-style-type:disc">Romeo</li></ul><ul id="27d92d31-7849-41d3-9d1f-37758e825dad" class="bulleted-list"><li style="list-style-type:disc">Shipton</li></ul><ul id="7565f36f-b42c-486d-a369-29e4c805aea7" class="bulleted-list"><li style="list-style-type:disc">Willy</li></ul></details></li></ul><ul id="ff071a44-6631-458b-955e-3af5fa72ae2d" class="toggle"><li><details open=""><summary>Skeleton Merchant</summary><figure id="12a8f238-6219-803f-b873-da9f7c5ccde3" class="image"><a href="Skeleton_Merchant.png"><img style="width:42px" src="Skeleton_Merchant.png"/></a></figure><ul id="5073b578-870d-4592-b88d-3665d18b4af2" class="bulleted-list"><li style="list-style-type:disc">Billy Marrows</li></ul><ul id="a6062410-a42a-43f5-bb40-6cbd6209e910" class="bulleted-list"><li style="list-style-type:disc">Bones McGee</li></ul><ul id="23d6cfd1-a497-48ab-88ce-93111bceb08f" class="bulleted-list"><li style="list-style-type:disc">Gloomy Mays</li></ul><ul id="b464a5ef-35bf-4700-a761-dd8ebdc86422" class="bulleted-list"><li style="list-style-type:disc">Jack Sellington</li></ul><ul id="be640b74-f1a3-4342-a852-5c343b292a23" class="bulleted-list"><li style="list-style-type:disc">Mandible Calavera</li></ul><ul id="2f311469-de34-4ea5-8835-82512f67054f" class="bulleted-list"><li style="list-style-type:disc">Mika</li></ul><ul id="a3b366c4-9477-4935-a54a-499e754a4395" class="bulleted-list"><li style="list-style-type:disc">No-Eyed Wiley</li></ul><ul id="79d0db25-5640-4b16-91d3-19a7915b34f9" class="bulleted-list"><li style="list-style-type:disc">Rattles Magoo</li></ul><ul id="82fd84ef-41f8-46e9-964d-9f7135bc9659" class="bulleted-list"><li style="list-style-type:disc">Skellington</li></ul><ul id="c837b0a1-2b1a-48b4-bf67-498be4f16dfe" class="bulleted-list"><li style="list-style-type:disc">Tom</li></ul><ul id="99f285e9-372c-49dc-9bc8-fd3e2780d8f5" class="bulleted-list"><li style="list-style-type:disc">Victor</li></ul></details></li></ul><ul id="0439ace7-d1a7-4580-a3e5-9c86f46e6ac4" class="toggle"><li><details open=""><summary>Nurse</summary><figure id="12a8f238-6219-8060-b982-c8774dc71a9c" class="image"><a href="Nurse.png"><img style="width:28px" src="Nurse.png"/></a></figure><ul id="d0b2fda5-bcf1-444b-a4ae-656f00467f50" class="bulleted-list"><li style="list-style-type:disc">Abigail</li></ul><ul id="1a58c37d-3343-4f2d-b175-215b7da39be5" class="bulleted-list"><li style="list-style-type:disc">Allison</li></ul><ul id="14741f83-96b2-4c55-9065-6954b8bc0358" class="bulleted-list"><li style="list-style-type:disc">Amy</li></ul><ul id="7834f70d-23f8-496c-870c-85aa95ac94b1" class="bulleted-list"><li style="list-style-type:disc">Caitlin</li></ul><ul id="ff7d7224-b3b4-4576-9234-e2e5166059a6" class="bulleted-list"><li style="list-style-type:disc">Carly</li></ul><ul id="c2c8ec82-5b4a-47eb-a228-444dc7d334d7" class="bulleted-list"><li style="list-style-type:disc">Claire</li></ul><ul id="9bb8ae4d-eb8e-4520-8715-d43c933ea961" class="bulleted-list"><li style="list-style-type:disc">Emily</li></ul><ul id="ad4f1a0b-c39b-406e-aa11-25a09b89bf26" class="bulleted-list"><li style="list-style-type:disc">Emma</li></ul><ul id="b756ce93-300d-4ad5-abde-175cccdfb914" class="bulleted-list"><li style="list-style-type:disc">Hannah</li></ul><ul id="3fe1510f-438a-4559-a590-38ae71a8fca7" class="bulleted-list"><li style="list-style-type:disc">Heather</li></ul><ul id="ef8de4c8-e998-4b1e-a1e0-5d5bf43b5013" class="bulleted-list"><li style="list-style-type:disc">Helen</li></ul><ul id="f67cee35-ab30-4af5-a865-59cd0ccb2de9" class="bulleted-list"><li style="list-style-type:disc">Holly</li></ul><ul id="924b9b77-c72c-4dd9-bc49-27db665f2915" class="bulleted-list"><li style="list-style-type:disc">Jenna</li></ul><ul id="24662450-3005-43e8-9432-fe11ca9b96f7" class="bulleted-list"><li style="list-style-type:disc">Kaitlin</li></ul><ul id="03950da6-7bb8-4281-8dcd-3d15ccc55af6" class="bulleted-list"><li style="list-style-type:disc">Kaitlyn</li></ul><ul id="5b6375bb-a095-4eae-8951-bf948ee7176b" class="bulleted-list"><li style="list-style-type:disc">Katelyn</li></ul><ul id="7a1c3e08-2df3-4328-b654-75b1dccc800f" class="bulleted-list"><li style="list-style-type:disc">Katherine</li></ul><ul id="b3c3d9b2-867a-467b-9ddc-0864dd3b88d7" class="bulleted-list"><li style="list-style-type:disc">Kathryn</li></ul><ul id="c0adf251-572a-448b-9ad1-ccd0cfd137c4" class="bulleted-list"><li style="list-style-type:disc">Katie</li></ul><ul id="bed46d42-3665-44aa-b87a-103a9982cc03" class="bulleted-list"><li style="list-style-type:disc">Kayla</li></ul><ul id="0c1e6a92-f607-4940-9031-439d26a4775d" class="bulleted-list"><li style="list-style-type:disc">Lisa</li></ul><ul id="220a417d-1ee9-4d2f-845f-55e0630cf3a8" class="bulleted-list"><li style="list-style-type:disc">Lorraine</li></ul><ul id="c236e7a8-c31a-480b-ba11-90a3dc864366" class="bulleted-list"><li style="list-style-type:disc">Madeline</li></ul><ul id="3ed1628a-f98f-475a-b4b4-5fd81b09140e" class="bulleted-list"><li style="list-style-type:disc">Molly</li></ul></details></li></ul><ul id="51b86a37-d449-4cee-83ea-2a4bde04ffdf" class="toggle"><li><details open=""><summary>Painter</summary><figure id="12a8f238-6219-80ed-9a50-ed3187586f4b" class="image"><a href="Painter.png"><img style="width:34px" src="Painter.png"/></a></figure><ul id="bf5e102c-5efa-4c41-bef8-574e5aaaedc0" class="bulleted-list"><li style="list-style-type:disc">Bruno</li></ul><ul id="078e5370-0515-441c-9ad0-7dcde8e440f6" class="bulleted-list"><li style="list-style-type:disc">Carlo</li></ul><ul id="80141de6-de73-4545-b00a-1d2691ea8b5e" class="bulleted-list"><li style="list-style-type:disc">Darren</li></ul><ul id="cf55547a-ed1e-4cf1-b11c-2f8bca252f70" class="bulleted-list"><li style="list-style-type:disc">Enzo</li></ul><ul id="fd51a546-d323-479c-b057-e4069920874b" class="bulleted-list"><li style="list-style-type:disc">Esreadel</li></ul><ul id="94c3fc04-fa73-4789-9429-816dc03fd05a" class="bulleted-list"><li style="list-style-type:disc">Guido</li></ul><ul id="0ac69191-c849-432b-8be0-647878b9f530" class="bulleted-list"><li style="list-style-type:disc">Jim</li></ul><ul id="fa7de046-061c-4d80-aac6-c6a45feffb29" class="bulleted-list"><li style="list-style-type:disc">Leonardo</li></ul><ul id="aad8c222-06ff-490f-9e54-e95271838198" class="bulleted-list"><li style="list-style-type:disc">Lorenzo</li></ul><ul id="ba7f1741-165a-4583-892d-c470e22a24f1" class="bulleted-list"><li style="list-style-type:disc">Luca</li></ul><ul id="1d712e5e-1d6f-4488-a632-f10384d3124b" class="bulleted-list"><li style="list-style-type:disc">Luciano</li></ul><ul id="13c65a9f-af50-4256-a954-17cd073e1e3d" class="bulleted-list"><li style="list-style-type:disc">Ludo</li></ul><ul id="eeca9ca2-d05f-444a-9b2b-b5c339d28a96" class="bulleted-list"><li style="list-style-type:disc">Luigi</li></ul><ul id="a4b1e6fd-6ce3-4bd8-ab5c-6f7347b14285" class="bulleted-list"><li style="list-style-type:disc">Marco</li></ul><ul id="adf01923-fa6f-4816-a4d5-fed5a94f2256" class="bulleted-list"><li style="list-style-type:disc">Mario</li></ul><ul id="59c5569b-1bb8-47a0-a8e7-708d8fca8788" class="bulleted-list"><li style="list-style-type:disc">Martino</li></ul><ul id="5fbb4bd0-ee61-47e6-a4bf-caf7cb2f4a01" class="bulleted-list"><li style="list-style-type:disc">Mauro</li></ul><ul id="a4a9f8bc-7200-443b-b03d-54c7c57f35f3" class="bulleted-list"><li style="list-style-type:disc">Raphael</li></ul><ul id="1ab6151b-d2f3-4db9-b2c4-739eb590ab87" class="bulleted-list"><li style="list-style-type:disc">Stefano</li></ul></details></li></ul><ul id="0ab8b85f-ad25-49ef-b312-4ad1e0f3488c" class="toggle"><li><details open=""><summary>Golfer</summary><figure id="12a8f238-6219-80b0-8271-cbaf06656190" class="image"><a href="Golfer.png"><img style="width:32px" src="Golfer.png"/></a></figure><ul id="5315d5b4-0b59-45c3-ac23-3cc7babea178" class="bulleted-list"><li style="list-style-type:disc">Arnie Palmfrond</li></ul><ul id="898331f1-92f2-4034-bf7e-b61be5d78fde" class="bulleted-list"><li style="list-style-type:disc">Billy Bones</li></ul><ul id="bc2f79a2-16c2-45e6-b42b-0893af81379a" class="bulleted-list"><li style="list-style-type:disc">Gunner McLovin</li></ul><ul id="125deaac-eb2f-424b-ae21-f9255fe04097" class="bulleted-list"><li style="list-style-type:disc">Harry Madison</li></ul><ul id="8fe670a8-1057-476b-aa84-781ebc1468db" class="bulleted-list"><li style="list-style-type:disc">Jake Nicklelisp</li></ul><ul id="1b2d2deb-c6bd-4104-aa69-ead90a212153" class="bulleted-list"><li style="list-style-type:disc">Jim Mulligan</li></ul><ul id="807b1c7e-9f0a-4147-a64b-a0ab208f5b0a" class="bulleted-list"><li style="list-style-type:disc">Lion Pines</li></ul><ul id="0fb071c7-1226-4f91-8b39-64ad54725990" class="bulleted-list"><li style="list-style-type:disc">William</li></ul></details></li></ul><ul id="f3f8bd4d-91d4-467c-9faa-be9406363673" class="toggle"><li><details open=""><summary>Dye Trader</summary><figure id="12a8f238-6219-80b0-9c98-e58fdb916241" class="image"><a href="Dye_Trader.png"><img style="width:24px" src="Dye_Trader.png"/></a></figure><ul id="40b36f5e-006a-4c35-ba97-a23bc7fbdfe2" class="bulleted-list"><li style="list-style-type:disc">Abdosir</li></ul><ul id="fa22a651-1f91-42bd-ba8f-821ba4a17f70" class="bulleted-list"><li style="list-style-type:disc">Ahinadab</li></ul><ul id="5679240a-df8d-4952-8a26-5752606faeac" class="bulleted-list"><li style="list-style-type:disc">Ahirom</li></ul><ul id="04d10bd9-d8b8-4096-8cb5-23418064f08f" class="bulleted-list"><li style="list-style-type:disc">Akbar</li></ul><ul id="7dd3c472-41c2-4fb7-b532-a08b4eddbaee" class="bulleted-list"><li style="list-style-type:disc">Batnoam</li></ul><ul id="e6fa171c-3152-4f0f-91bd-86be7679c350" class="bulleted-list"><li style="list-style-type:disc">Bodashtart</li></ul><ul id="c4b47de0-6fd7-4133-a136-6ae523a8158c" class="bulleted-list"><li style="list-style-type:disc">Danel</li></ul><ul id="b8e697e7-7b5b-42d8-965e-4210fa2d5145" class="bulleted-list"><li style="list-style-type:disc">Hannibal</li></ul><ul id="ea5019b7-b383-41a7-a85a-ee83a67bace7" class="bulleted-list"><li style="list-style-type:disc">Hanno</li></ul><ul id="bad00b02-eece-4961-b73b-ceb4e4934da0" class="bulleted-list"><li style="list-style-type:disc">Hiram</li></ul><ul id="c4eeb94c-c81b-4246-a24c-d221b86940e0" class="bulleted-list"><li style="list-style-type:disc">Kanmi</li></ul><ul id="711c5b5b-ae0d-4bde-96b5-65aca093dc91" class="bulleted-list"><li style="list-style-type:disc">Philosir</li></ul><ul id="332ccc5b-eebe-472e-9adb-8c79bd867e97" class="bulleted-list"><li style="list-style-type:disc">Sikarbaal</li></ul><ul id="6f43bbb2-17a2-40e8-98e8-950b841a8c27" class="bulleted-list"><li style="list-style-type:disc">Tabnit</li></ul><ul id="7f15b17f-9473-4abc-9cdd-2c303f800ca5" class="bulleted-list"><li style="list-style-type:disc">Yehomilk</li></ul><ul id="d295064f-626b-4cc6-a56c-03c5232bb665" class="bulleted-list"><li style="list-style-type:disc">Yutpan</li></ul></details></li></ul><ul id="d9626a17-8089-4e31-a52e-f8ae7c1c518f" class="toggle"><li><details open=""><summary>Demolitionist</summary><figure id="12a8f238-6219-8025-99b5-ff7aaa1f72a6" class="image"><a href="Demolitionist.png"><img style="width:36px" src="Demolitionist.png"/></a></figure><ul id="7d4f3185-3d41-4f08-a194-143a838a7dbc" class="bulleted-list"><li style="list-style-type:disc">Bazdin</li></ul><ul id="10ae7b15-7ac1-4dbb-af8a-ff9e5102695b" class="bulleted-list"><li style="list-style-type:disc">Beldin</li></ul><ul id="197a907d-27a2-4eeb-9980-d1a2d0979731" class="bulleted-list"><li style="list-style-type:disc">Boften</li></ul><ul id="953246e5-7d36-4032-8386-1f150f86fdb4" class="bulleted-list"><li style="list-style-type:disc">Darur</li></ul><ul id="2fbcabb6-f6e4-4d24-a799-7bb3fc1a380c" class="bulleted-list"><li style="list-style-type:disc">Dias</li></ul><ul id="f8d06274-9714-4520-9c9e-9ebc73ae8112" class="bulleted-list"><li style="list-style-type:disc">Dolbere</li></ul><ul id="4e468ba8-3261-4ec2-b63c-5cbf0e8dea3b" class="bulleted-list"><li style="list-style-type:disc">Dolgen</li></ul><ul id="a20e7001-97f2-45de-a651-736699d84cdc" class="bulleted-list"><li style="list-style-type:disc">Dolgrim</li></ul><ul id="c3e17a90-0cf3-4d36-846f-b79e2efd041e" class="bulleted-list"><li style="list-style-type:disc">Duerthen</li></ul><ul id="7f35498c-107d-4b11-beae-bf7abf9f79a7" class="bulleted-list"><li style="list-style-type:disc">Durim</li></ul><ul id="3dc7aa9f-5966-4866-8293-29742ea5520f" class="bulleted-list"><li style="list-style-type:disc">Fikod</li></ul><ul id="48cd9917-0937-4831-9674-a0221809e6e7" class="bulleted-list"><li style="list-style-type:disc">Garval</li></ul><ul id="d4833fef-93a0-43a7-a862-95395fda82e5" class="bulleted-list"><li style="list-style-type:disc">Gimli</li></ul><ul id="116915cc-016c-4a44-b59f-d9247ef03439" class="bulleted-list"><li style="list-style-type:disc">Gimut</li></ul><ul id="c309b84b-f58b-4b11-8cb7-20da334256e1" class="bulleted-list"><li style="list-style-type:disc">Jarut</li></ul><ul id="14d1df37-c488-4c0b-8b61-bde3a7e4b62e" class="bulleted-list"><li style="list-style-type:disc">Morthal</li></ul><ul id="d80dcb98-79ea-41bb-bb17-7c6dad9974b7" class="bulleted-list"><li style="list-style-type:disc">Norkas</li></ul><ul id="265b057a-9771-46f8-89bc-137542f2bfc3" class="bulleted-list"><li style="list-style-type:disc">Norsun</li></ul><ul id="a2fe7298-c7d9-4cde-a071-ba14ed70c5e5" class="bulleted-list"><li style="list-style-type:disc">Oten</li></ul><ul id="df6eb574-fcc8-4e35-9061-afa74d3cfd89" class="bulleted-list"><li style="list-style-type:disc">Ovbere</li></ul><ul id="4140906f-0bde-4cf3-8062-8fd8fd33e265" class="bulleted-list"><li style="list-style-type:disc">Tordak</li></ul><ul id="322f2949-aea2-4117-b243-352ec25d8f2f" class="bulleted-list"><li style="list-style-type:disc">Urist</li></ul></details></li></ul><ul id="326a6761-a14e-4a7d-8e0a-9d8e0e855610" class="toggle"><li><details open=""><summary>Dryad</summary><figure id="12a8f238-6219-809a-9de7-e9d1ac8c76b7" class="image"><a href="Dryad.png"><img style="width:26px" src="Dryad.png"/></a></figure><ul id="a4839596-59da-4cae-8aad-defcdc13dde8" class="bulleted-list"><li style="list-style-type:disc">Alalia</li></ul><ul id="7c82d588-ccc9-44c9-9154-029602e8d58e" class="bulleted-list"><li style="list-style-type:disc">Alura</li></ul><ul id="d38e493f-fa21-4008-9a75-ad8310bfcc3f" class="bulleted-list"><li style="list-style-type:disc">Ariella</li></ul><ul id="784a75a1-62d0-40fc-b825-8a4a64b7d64a" class="bulleted-list"><li style="list-style-type:disc">Caelia</li></ul><ul id="a5f3cf69-f1c6-4dc9-8895-5236ce5eb8fb" class="bulleted-list"><li style="list-style-type:disc">Calista</li></ul><ul id="e933126c-75d7-45d2-a3e7-4de9015bdb10" class="bulleted-list"><li style="list-style-type:disc">Celestia</li></ul><ul id="55a91114-fd2f-4511-9e4f-da1e3b1c2474" class="bulleted-list"><li style="list-style-type:disc">Chryseis</li></ul><ul id="28302111-2529-41c3-acd8-87e3bd0a3cc9" class="bulleted-list"><li style="list-style-type:disc">Elysia</li></ul><ul id="97f01c22-ea3f-46fa-a529-af2dff10e785" class="bulleted-list"><li style="list-style-type:disc">Emerenta</li></ul><ul id="453534c3-f7eb-4032-b2e3-8c59708f3fdd" class="bulleted-list"><li style="list-style-type:disc">Evvie</li></ul><ul id="4ee23e8a-1c39-418d-a7fb-075551d9ac1f" class="bulleted-list"><li style="list-style-type:disc">Faye</li></ul><ul id="a4a2e835-4e27-4652-9280-5a041d1a3c5e" class="bulleted-list"><li style="list-style-type:disc">Felicitae</li></ul><ul id="d567171c-a8c4-4db4-b8a4-b7f381ec708a" class="bulleted-list"><li style="list-style-type:disc">Isis</li></ul><ul id="14d8a28f-9f23-49ef-8db7-63bb0a9dc743" class="bulleted-list"><li style="list-style-type:disc">Lunette</li></ul><ul id="3f3ca2fa-2a1b-4e75-9654-c9a25d4b1662" class="bulleted-list"><li style="list-style-type:disc">Nata</li></ul><ul id="eb38cf70-add3-4f98-a4b9-279ae08de5f0" class="bulleted-list"><li style="list-style-type:disc">Nissa</li></ul><ul id="9580a9f0-093b-4bc5-8fe7-041d32b23e38" class="bulleted-list"><li style="list-style-type:disc">Rosalva</li></ul><ul id="77966c5c-af5c-4b52-9d25-073484938999" class="bulleted-list"><li style="list-style-type:disc">Shea</li></ul><ul id="341de807-3a92-4e69-af7b-b03dfa535584" class="bulleted-list"><li style="list-style-type:disc">Tania</li></ul><ul id="3e8d24b5-b92e-497d-850e-c87ff2bec4e5" class="bulleted-list"><li style="list-style-type:disc">Tatiana</li></ul><ul id="2183e046-eedd-46bb-904a-a3e651c9d406" class="bulleted-list"><li style="list-style-type:disc">Xylia</li></ul></details></li></ul><ul id="61b8ca38-c94c-4279-9f10-d37017c89998" class="toggle"><li><details open=""><summary>Tavernkeep</summary><figure id="12a8f238-6219-804a-9ccb-fca26364c20c" class="image"><a href="Tavernkeep.png"><img style="width:32px" src="Tavernkeep.png"/></a></figure><ul id="1f3d1d71-7b98-40f2-b6f4-1478547aa100" class="bulleted-list"><li style="list-style-type:disc">Barkeep</li></ul><ul id="a1ebf9d6-04f3-45e0-a7a6-cffede062762" class="bulleted-list"><li style="list-style-type:disc">Bill</li></ul><ul id="9305a22c-55c3-4162-8a8b-3d7f5bc2395a" class="bulleted-list"><li style="list-style-type:disc">Blacksmith</li></ul><ul id="4a3b02bc-f69a-4d66-b035-584055be7966" class="bulleted-list"><li style="list-style-type:disc">Bruce</li></ul><ul id="31ec80c2-d17a-4a49-a50a-29efc3e0f482" class="bulleted-list"><li style="list-style-type:disc">Dale</li></ul><ul id="57fcc97e-5c6d-47fd-a23a-5b7bb24fb5c7" class="bulleted-list"><li style="list-style-type:disc">Dani Moo</li></ul><ul id="04141b4e-ec2b-4f42-8e8f-fcc663cd0e73" class="bulleted-list"><li style="list-style-type:disc">Driscan</li></ul><ul id="d28ec04f-0f63-4e86-8516-934136ae9a3a" class="bulleted-list"><li style="list-style-type:disc">Elandrian</li></ul><ul id="d4f31e8b-fdf1-4fc7-b581-3dec3cf33d92" class="bulleted-list"><li style="list-style-type:disc">Ernest</li></ul><ul id="2d920408-2663-4e42-ab8e-cdc3a1d764c0" class="bulleted-list"><li style="list-style-type:disc">Iamisom</li></ul><ul id="15791a4c-f658-4bd0-8eaa-fc245c1ab250" class="bulleted-list"><li style="list-style-type:disc">Javahawk</li></ul><ul id="62a69f31-9f16-4364-bb5f-1595c0805445" class="bulleted-list"><li style="list-style-type:disc">Jerry</li></ul><ul id="cdfb4cf7-28a8-4bc4-99c1-5ed0faa14af2" class="bulleted-list"><li style="list-style-type:disc">Moe</li></ul><ul id="8adcf74c-2418-4460-be9d-0bfe8e842207" class="bulleted-list"><li style="list-style-type:disc">Paddy</li></ul><ul id="8a4f3991-3cfb-4794-9b14-0fbae0b5ec4c" class="bulleted-list"><li style="list-style-type:disc">Ted</li></ul><ul id="4ae1f1a1-8ae4-4259-9f09-7e8f1ebdfd9c" class="bulleted-list"><li style="list-style-type:disc">William</li></ul></details></li></ul><ul id="e5e9e418-8273-457d-b150-27e14646f174" class="toggle"><li><details open=""><summary>Arms Dealer</summary><figure id="12a8f238-6219-809b-8146-ec7289b4c321" class="image"><a href="Arms_Dealer.png"><img style="width:18px" src="Arms_Dealer.png"/></a></figure><ul id="d86395f7-ef02-4a81-929c-3961678a6e66" class="bulleted-list"><li style="list-style-type:disc">Andre</li></ul><ul id="240859dd-18f9-4a5e-8a4d-9b8f5561291a" class="bulleted-list"><li style="list-style-type:disc">Brimst</li></ul><ul id="471a98f7-3c91-4874-8c76-078aa851f68b" class="bulleted-list"><li style="list-style-type:disc">Bronson</li></ul><ul id="2b00abc4-76f9-4f46-9d29-cd86ccba2192" class="bulleted-list"><li style="list-style-type:disc">Dante</li></ul><ul id="228e5d0b-ad72-47fd-93f4-0eda1faf4eeb" class="bulleted-list"><li style="list-style-type:disc">Darius</li></ul><ul id="ff133e19-ea62-4a9f-970e-292a75480e78" class="bulleted-list"><li style="list-style-type:disc">Darnell</li></ul><ul id="7dd798bc-395b-4c08-87d9-d13c2d7552c2" class="bulleted-list"><li style="list-style-type:disc">Darryl</li></ul><ul id="d710eb3a-2c78-4bdd-8417-32a9d796b1b5" class="bulleted-list"><li style="list-style-type:disc">DeAndre</li></ul><ul id="ea14f424-cc53-4348-b017-ada64393fdf1" class="bulleted-list"><li style="list-style-type:disc">Demetrius</li></ul><ul id="8bd2859f-bf5e-4857-853d-be7b59aca3f9" class="bulleted-list"><li style="list-style-type:disc">DeShawn</li></ul><ul id="dc01f8c5-09e7-4fbd-b717-b44b04ea474d" class="bulleted-list"><li style="list-style-type:disc">Dominique</li></ul><ul id="fa13adc0-2519-41dc-9d67-45c7ccc2e511" class="bulleted-list"><li style="list-style-type:disc">Jalen</li></ul><ul id="8c366a46-60fc-4d46-917c-b3de1aa5910e" class="bulleted-list"><li style="list-style-type:disc">Jamal</li></ul><ul id="eb106434-4ac5-49c3-8bac-74a403451196" class="bulleted-list"><li style="list-style-type:disc">Malik</li></ul><ul id="8934f056-088d-447b-b6d9-d5c7871db88a" class="bulleted-list"><li style="list-style-type:disc">Marquis</li></ul><ul id="334e6d5f-af92-463e-8d66-786df68d3500" class="bulleted-list"><li style="list-style-type:disc">Maurice</li></ul><ul id="b8ca990b-2134-44a3-8614-a61829872d1c" class="bulleted-list"><li style="list-style-type:disc">Reginald</li></ul><ul id="b1983b85-e34a-4f1c-ac2d-78671bb7a162" class="bulleted-list"><li style="list-style-type:disc">Terrance</li></ul><ul id="0e168bc3-03f4-41c8-b75f-14ca82686289" class="bulleted-list"><li style="list-style-type:disc">Terrell</li></ul><ul id="ef9f277b-7736-4fc3-84d0-6c3dcca1fe2b" class="bulleted-list"><li style="list-style-type:disc">Tony</li></ul><ul id="a2b60cc0-7b43-4501-b70c-b27c7de8399d" class="bulleted-list"><li style="list-style-type:disc">Trevon</li></ul><ul id="55bfe511-448f-4703-a0f4-69582b034377" class="bulleted-list"><li style="list-style-type:disc">Tyrone</li></ul><ul id="ad65fca8-6605-4090-b8f8-e58885290d24" class="bulleted-list"><li style="list-style-type:disc">Willie</li></ul><ul id="5d3c8abf-f0b8-4e32-9ea2-7859ca7babad" class="bulleted-list"><li style="list-style-type:disc">Xavier</li></ul></details></li></ul><ul id="fd02a879-fa21-4669-b1c8-4ff7a462ed5d" class="toggle"><li><details open=""><summary>Party Girl</summary><figure id="12a8f238-6219-803c-b3e5-da3b4b1ffe33" class="image"><a href="Party_Girl.png"><img style="width:22px" src="Party_Girl.png"/></a></figure><ul id="6f1e61d0-07d5-4389-a5e2-07084816ad13" class="bulleted-list"><li style="list-style-type:disc">Amanda</li></ul><ul id="833fc840-a770-4c54-8d87-ca0bd737e433" class="bulleted-list"><li style="list-style-type:disc">Bailey</li></ul><ul id="c2b312d6-de6b-4593-9106-f8f98c1341c3" class="bulleted-list"><li style="list-style-type:disc">Bambi</li></ul><ul id="2b5be7a6-f187-466f-91dc-ca89efdc8c68" class="bulleted-list"><li style="list-style-type:disc">Bunny</li></ul><ul id="d37e842d-6725-42a5-871a-6c1dc089cb25" class="bulleted-list"><li style="list-style-type:disc">Candy</li></ul><ul id="3b2ac1d9-a180-45ae-8bb3-317247d8840d" class="bulleted-list"><li style="list-style-type:disc">Cherry</li></ul><ul id="7cb0ddce-4ddb-4476-bec1-8a968713c47e" class="bulleted-list"><li style="list-style-type:disc">Dazzle</li></ul><ul id="082a4a86-eaeb-4348-98ec-5b189b50bd66" class="bulleted-list"><li style="list-style-type:disc">Destiny</li></ul><ul id="dc24efc6-8648-418d-9fa8-0f0d610e8047" class="bulleted-list"><li style="list-style-type:disc">Fantasia</li></ul><ul id="2be16201-fba9-40a2-8134-e635ac1eccef" class="bulleted-list"><li style="list-style-type:disc">Fantasy</li></ul><ul id="9d973e5e-a9a8-45d6-b9af-db050c4e255c" class="bulleted-list"><li style="list-style-type:disc">Glitter</li></ul><ul id="1b7aa157-9ad4-48e0-9cb2-d1ad8aea80ef" class="bulleted-list"><li style="list-style-type:disc">Isis</li></ul><ul id="f72db5b6-ba9f-4bff-b809-24fdc6477cd8" class="bulleted-list"><li style="list-style-type:disc">Lexus</li></ul><ul id="23aab40e-7202-4c46-9c97-e1e1edad8667" class="bulleted-list"><li style="list-style-type:disc">Paris</li></ul><ul id="5f0a1ed0-0683-4606-a5ef-35484984c869" class="bulleted-list"><li style="list-style-type:disc">Sparkle</li></ul><ul id="a6dd63b5-f920-4f01-852f-857db63f5a00" class="bulleted-list"><li style="list-style-type:disc">Star</li></ul><ul id="38c888ac-e8f7-48f6-9178-b9262978dd6b" class="bulleted-list"><li style="list-style-type:disc">Sugar</li></ul><ul id="01fb6249-452d-4827-bc8c-b6390e6597f5" class="bulleted-list"><li style="list-style-type:disc">Trixy</li></ul></details></li></ul><ul id="43d66167-46ba-49b2-8c7a-a48ebcf70f24" class="toggle"><li><details open=""><summary>Stylist</summary><figure id="12a8f238-6219-8069-9b1c-c117c1fd3f99" class="image"><a href="Stylist.png"><img style="width:19px" src="Stylist.png"/></a></figure><ul id="116ff22f-da54-4943-89e6-cedcc78044c9" class="bulleted-list"><li style="list-style-type:disc">Annabel</li></ul><ul id="7c44294a-e743-4245-8106-1029c0278e72" class="bulleted-list"><li style="list-style-type:disc">Biah</li></ul><ul id="680e17b4-20a6-4b7a-9982-0b7be16464ce" class="bulleted-list"><li style="list-style-type:disc">Bri</li></ul><ul id="8bc75182-bc8b-410e-aa0f-66d858c5eaaf" class="bulleted-list"><li style="list-style-type:disc">Brianne</li></ul><ul id="7a4d31c0-4ef1-4a70-9aec-6b0202dc4684" class="bulleted-list"><li style="list-style-type:disc">Esmeralda</li></ul><ul id="de784199-4c4e-4e19-89a1-9b92b61449df" class="bulleted-list"><li style="list-style-type:disc">Flora</li></ul><ul id="1728db93-468e-4619-b29b-88481b9ece7c" class="bulleted-list"><li style="list-style-type:disc">Hazel</li></ul><ul id="2c6180d7-9a36-44e4-b17a-b589375a9a19" class="bulleted-list"><li style="list-style-type:disc">Iris</li></ul><ul id="2df55389-440a-43f3-a0a2-ba1bb30b0dfc" class="bulleted-list"><li style="list-style-type:disc">Kati</li></ul><ul id="96e08b9e-420f-4c9e-8e08-1935eaed67f2" class="bulleted-list"><li style="list-style-type:disc">Kylie</li></ul><ul id="e73cc2b3-396b-48e4-b3e6-8790fe2f3582" class="bulleted-list"><li style="list-style-type:disc">Lola</li></ul><ul id="2158e6ac-907c-44a0-b021-d8a6d4684455" class="bulleted-list"><li style="list-style-type:disc">Meliyah</li></ul><ul id="2a817722-7028-464d-a113-2ece34fbf49e" class="bulleted-list"><li style="list-style-type:disc">Pearl</li></ul><ul id="9566ec34-bfa3-4f38-a917-79069e9085ac" class="bulleted-list"><li style="list-style-type:disc">Petra</li></ul><ul id="4c5aedca-4e35-49e1-960b-83b8fc119dd4" class="bulleted-list"><li style="list-style-type:disc">Rox</li></ul><ul id="4f87c9bc-4187-4e70-8635-b976a71f9f53" class="bulleted-list"><li style="list-style-type:disc">Roxanne</li></ul><ul id="4c71d400-4bf4-4b34-a106-7f8b890df644" class="bulleted-list"><li style="list-style-type:disc">Ruby</li></ul><ul id="1ee89b54-ef99-4af6-8619-14b002ece4cc" class="bulleted-list"><li style="list-style-type:disc">Scarlett</li></ul><ul id="74c15a66-76f8-4f17-b124-30c42d24ca6e" class="bulleted-list"><li style="list-style-type:disc">Stella</li></ul><ul id="7fea8af6-b89e-499e-a2eb-044e65ca192d" class="bulleted-list"><li style="list-style-type:disc">Tallulah</li></ul></details></li></ul><ul id="6ee7c92c-5ba1-4ea8-aa96-d70a6045489c" class="toggle"><li><details open=""><summary>Angler</summary><figure id="12a8f238-6219-80c8-a99c-f76ea08863b0" class="image"><a href="Angler.png"><img style="width:18px" src="Angler.png"/></a></figure><ul id="a4da5235-88e5-41b8-966e-8f27375050fb" class="bulleted-list"><li style="list-style-type:disc">Adam</li></ul><ul id="42ad9aa0-9dfe-462f-a328-afaf50628133" class="bulleted-list"><li style="list-style-type:disc">Bart</li></ul><ul id="f762908b-9bb2-4eb2-bd4c-5aed2a495e09" class="bulleted-list"><li style="list-style-type:disc">Billy</li></ul><ul id="b3decda3-8c5c-4a8d-8841-e31d70e52e9f" class="bulleted-list"><li style="list-style-type:disc">Bobby</li></ul><ul id="711a6eb6-069e-47af-9f89-c47e0c676dd0" class="bulleted-list"><li style="list-style-type:disc">Bryce </li></ul><ul id="e913776c-e6d9-44bc-a536-711e9d4af9ba" class="bulleted-list"><li style="list-style-type:disc">Charles</li></ul><ul id="e31f3409-3618-41d5-b9d7-7d86a86114d2" class="bulleted-list"><li style="list-style-type:disc">Danny</li></ul><ul id="20ca5121-1f9d-483a-b0c5-ede150cb603b" class="bulleted-list"><li style="list-style-type:disc">Grayson</li></ul><ul id="8034bfb7-25c2-4175-bbd2-b0b459a95684" class="bulleted-list"><li style="list-style-type:disc">Ivan</li></ul><ul id="7272785a-a41a-435c-b603-3158e64bc51c" class="bulleted-list"><li style="list-style-type:disc">Izzy</li></ul><ul id="67a5b43a-90d2-454c-8384-a8691294a0b3" class="bulleted-list"><li style="list-style-type:disc">Jey</li></ul><ul id="00031619-784c-41b0-8cc2-e492d1eaa414" class="bulleted-list"><li style="list-style-type:disc">Jimmy</li></ul><ul id="e9c4374b-eb86-4cdf-a76a-78126694a2aa" class="bulleted-list"><li style="list-style-type:disc">Johnny</li></ul><ul id="26debc23-8154-4e9a-bd68-286b35c22e28" class="bulleted-list"><li style="list-style-type:disc">Matty</li></ul><ul id="bc63020d-13d2-4dd8-a8ef-616a98b07550" class="bulleted-list"><li style="list-style-type:disc">Miles</li></ul><ul id="5e055849-e6e9-412b-9d38-ca50bcf1e6e3" class="bulleted-list"><li style="list-style-type:disc">Nathan</li></ul><ul id="64ece457-269a-41f3-8b1e-90fbad9d5733" class="bulleted-list"><li style="list-style-type:disc">Phillip</li></ul><ul id="d1e6ce28-7b71-4d0e-afce-827d3aea09c8" class="bulleted-list"><li style="list-style-type:disc">Sammy</li></ul><ul id="b3f5833b-8b48-430f-a665-7780dc217868" class="bulleted-list"><li style="list-style-type:disc">Simon</li></ul><ul id="ae470966-c130-450f-ad60-7e361f9fb141" class="bulleted-list"><li style="list-style-type:disc">Spencer</li></ul><ul id="6fc66b44-e4c8-41c6-a8cc-7fb2c5e271c3" class="bulleted-list"><li style="list-style-type:disc">Timmy</li></ul><ul id="f77d2c8b-9493-483b-8e51-41852358f25c" class="bulleted-list"><li style="list-style-type:disc">Tyler</li></ul></details></li></ul><ul id="1b56f409-76e0-4144-86ed-064e6fcc7a32" class="toggle"><li><details open=""><summary>Goblin Tinkerer</summary><figure id="12a8f238-6219-80e9-a48c-f6d970b8ca78" class="image"><a href="Goblin_Tinkerer.png"><img style="width:18px" src="Goblin_Tinkerer.png"/></a></figure><ul id="4dddb207-a134-4ac5-9a82-3e3092b270d6" class="bulleted-list"><li style="list-style-type:disc">Arback</li></ul><ul id="f4212a75-c2d8-4fae-980c-dee2d0d09e0a" class="bulleted-list"><li style="list-style-type:disc">Dalek</li></ul><ul id="bfa34ea0-88a5-4276-8a4a-fa6ca6fbe8ea" class="bulleted-list"><li style="list-style-type:disc">Darz</li></ul><ul id="c0685c4d-fe5e-47b0-abfa-16dbdb39a0eb" class="bulleted-list"><li style="list-style-type:disc">Durnok</li></ul><ul id="5dd7c019-9294-4111-b131-3bcc2209209b" class="bulleted-list"><li style="list-style-type:disc">Fahd</li></ul><ul id="48f81f2d-9cdb-4668-a962-a88b0ff703cd" class="bulleted-list"><li style="list-style-type:disc">Fjell</li></ul><ul id="c5304b00-2187-4a8a-86a5-7755fbfdbe44" class="bulleted-list"><li style="list-style-type:disc">Gnudar</li></ul><ul id="61c76417-a72b-434a-a37e-e76f971405f1" class="bulleted-list"><li style="list-style-type:disc">Grodax</li></ul><ul id="59399c8f-581f-4f96-9c12-015f95fa19f9" class="bulleted-list"><li style="list-style-type:disc">Knogs</li></ul><ul id="a6121f2a-d869-4d0a-ba7a-54a8a862849e" class="bulleted-list"><li style="list-style-type:disc">Knub</li></ul><ul id="0d9a7fae-6c7d-42f3-9878-35881c73b705" class="bulleted-list"><li style="list-style-type:disc">Mobart</li></ul><ul id="cfef66f5-0f7f-45d7-a44c-b3a52963001f" class="bulleted-list"><li style="list-style-type:disc">Mrunok</li></ul><ul id="831f00e1-fac4-4383-bc21-068a39ad16bd" class="bulleted-list"><li style="list-style-type:disc">Negurk</li></ul><ul id="2f1d3cb9-dfa3-49a8-9227-7fd3fda09052" class="bulleted-list"><li style="list-style-type:disc">Nort</li></ul><ul id="95b57a0d-8aab-4de5-a553-8106ea6ae507" class="bulleted-list"><li style="list-style-type:disc">Nuxatk</li></ul><ul id="42e19cb3-e02c-461b-854b-498ebbc29147" class="bulleted-list"><li style="list-style-type:disc">Ragz</li></ul><ul id="0c747dfe-3ce3-44ed-bbf0-5384d9794ff7" class="bulleted-list"><li style="list-style-type:disc">Sarx</li></ul><ul id="5d69f425-1246-4827-8c82-ae911f9dbd48" class="bulleted-list"><li style="list-style-type:disc">Smador</li></ul><ul id="ad9e435e-57e2-413d-ac5f-d7caac8566af" class="bulleted-list"><li style="list-style-type:disc">Stazen</li></ul><ul id="3e047a37-2431-4b82-9923-e1fecb96fa02" class="bulleted-list"><li style="list-style-type:disc">Stezom</li></ul><ul id="b397165f-66f6-46d9-9ccc-6becc91bf171" class="bulleted-list"><li style="list-style-type:disc">Tgerd</li></ul><ul id="bbd126d1-9094-47e3-ba63-e39c61007330" class="bulleted-list"><li style="list-style-type:disc">Tkanus</li></ul><ul id="855598e7-fdf7-4074-85a3-6a5d5f126d55" class="bulleted-list"><li style="list-style-type:disc">Trogem</li></ul><ul id="dd8a8524-8efa-478e-8639-85e3cca1e48e" class="bulleted-list"><li style="list-style-type:disc">Xanos</li></ul><ul id="25a8825e-143f-4341-9fe3-dfbd4d2656f7" class="bulleted-list"><li style="list-style-type:disc">Xon</li></ul></details></li></ul><ul id="7fc9489c-d9a8-427d-875e-ac5406cb444d" class="toggle"><li><details open=""><summary>Witch Doctor</summary><figure id="12a8f238-6219-8060-af86-d8cfc8b96539" class="image"><a href="Witch_Doctor.png"><img style="width:31px" src="Witch_Doctor.png"/></a></figure><ul id="f0724bdc-f0ea-4e2d-8e9b-305c21229b89" class="bulleted-list"><li style="list-style-type:disc">Abibe</li></ul><ul id="a03e3a52-d9fd-4042-9871-53d30577429a" class="bulleted-list"><li style="list-style-type:disc">Gboto</li></ul><ul id="99bdeab3-d89f-437c-994d-adbdf7b6bc56" class="bulleted-list"><li style="list-style-type:disc">Jamundi</li></ul><ul id="6c3d8c0d-e087-43e0-ac6c-82fde307454c" class="bulleted-list"><li style="list-style-type:disc">Kogi-ghi</li></ul><ul id="e7077ab5-695f-423c-8bf5-7305916cb3ca" class="bulleted-list"><li style="list-style-type:disc">Konah</li></ul><ul id="5af6ac97-327c-4d64-a87a-d4562b26eeee" class="bulleted-list"><li style="list-style-type:disc">Opuni</li></ul><ul id="92e83ce0-16a1-4c27-acc3-da83e853a606" class="bulleted-list"><li style="list-style-type:disc">Tairona</li></ul><ul id="6197386e-4f16-4e2b-82a5-bfab7074992d" class="bulleted-list"><li style="list-style-type:disc">U&#x27;wa</li></ul><ul id="51f36e92-cac9-4131-81dd-e6e1f46801bd" class="bulleted-list"><li style="list-style-type:disc">Xirigua</li></ul><ul id="af5ab1e7-da69-4e23-8780-ff717dde2a61" class="bulleted-list"><li style="list-style-type:disc">Zop&#x27;a</li></ul></details></li></ul><ul id="842ad399-bd99-4a6c-8998-c2c7cc573aa3" class="toggle"><li><details open=""><summary>Clothier</summary><figure id="12a8f238-6219-807b-b122-c2f68720de8e" class="image"><a href="Clothier.png"><img style="width:20px" src="Clothier.png"/></a></figure><ul id="ba80cd41-6cd5-429b-bebc-a7dabbafee0c" class="bulleted-list"><li style="list-style-type:disc">Alfred</li></ul><ul id="4fff329f-3465-4717-8b46-3e5ae564815e" class="bulleted-list"><li style="list-style-type:disc">Arthur</li></ul><ul id="19187614-1cc7-45c3-b500-23d141df2673" class="bulleted-list"><li style="list-style-type:disc">Benjamin</li></ul><ul id="cc28c57a-f659-4385-a1d5-8e6dbe2ae8c5" class="bulleted-list"><li style="list-style-type:disc">Cedric</li></ul><ul id="01fe152a-37e4-4d72-997a-48ba9809473d" class="bulleted-list"><li style="list-style-type:disc">Clive</li></ul><ul id="d76367be-a41d-40a6-9dfa-d97143bfa162" class="bulleted-list"><li style="list-style-type:disc">Cyril</li></ul><ul id="7d0aad3a-33c8-4a4a-855a-8f7da09deb53" class="bulleted-list"><li style="list-style-type:disc">Edgar</li></ul><ul id="66c45f99-580d-47f6-aba4-678ce77a03c6" class="bulleted-list"><li style="list-style-type:disc">Edmund</li></ul><ul id="5921e8b4-abac-49fe-ac4f-8862a28684a9" class="bulleted-list"><li style="list-style-type:disc">Edward</li></ul><ul id="282c0da2-45b7-41de-ac60-91c19cf3d399" class="bulleted-list"><li style="list-style-type:disc">Eustace</li></ul><ul id="9a27aa62-5496-4aa3-8151-2472119460fb" class="bulleted-list"><li style="list-style-type:disc">Fitz</li></ul><ul id="5ea8184f-da7c-4e51-ae16-bf695ebb1eaa" class="bulleted-list"><li style="list-style-type:disc">Graham</li></ul><ul id="bc001cbd-7aa6-41be-9410-7f8d0f0dedb6" class="bulleted-list"><li style="list-style-type:disc">Henry</li></ul><ul id="60c3a6fc-f858-417f-a044-8c0cad557a36" class="bulleted-list"><li style="list-style-type:disc">Herald</li></ul><ul id="7443c1e6-9e90-4779-bb49-12b62db5eab0" class="bulleted-list"><li style="list-style-type:disc">James</li></ul><ul id="5bb4436b-c866-4ed4-abc9-1a9c446dbad2" class="bulleted-list"><li style="list-style-type:disc">Lincoln</li></ul><ul id="096bfef4-6ae9-4f2b-94ef-bf3460c55867" class="bulleted-list"><li style="list-style-type:disc">Lloyd</li></ul><ul id="6a8f44cc-c047-4a37-ab6c-d5613a16386c" class="bulleted-list"><li style="list-style-type:disc">Mervyn</li></ul><ul id="2dc91fea-a67c-4263-92d8-40e3ace5462f" class="bulleted-list"><li style="list-style-type:disc">Nigel</li></ul><ul id="7cadc689-b4a3-46d7-88dd-3d775e14e192" class="bulleted-list"><li style="list-style-type:disc">Pip</li></ul><ul id="5dd9f165-c150-4f95-a465-c53e99b008cd" class="bulleted-list"><li style="list-style-type:disc">Rodney</li></ul><ul id="812d58e3-28b9-4bdd-8f93-80263f6fdd1c" class="bulleted-list"><li style="list-style-type:disc">Rodrick</li></ul><ul id="1db660be-513b-4de6-9659-663d6e723e93" class="bulleted-list"><li style="list-style-type:disc">Roland</li></ul><ul id="a9764364-1c44-458e-97f2-67de45cc5fba" class="bulleted-list"><li style="list-style-type:disc">Rupert</li></ul><ul id="1e722ca8-fea7-48f8-8553-12fc24c38651" class="bulleted-list"><li style="list-style-type:disc">Sebastian</li></ul></details></li></ul><ul id="2d86fb52-48e4-48d9-956f-5a8fc7243f2d" class="toggle"><li><details open=""><summary>Mechanic</summary><figure id="12a8f238-6219-80f4-b367-ed4a8c100551" class="image"><a href="Mechanic.png"><img style="width:25px" src="Mechanic.png"/></a></figure><ul id="88916c21-428a-40c4-8b09-e5b4696b2eb6" class="bulleted-list"><li style="list-style-type:disc">Amy</li></ul><ul id="520e48cf-3ab0-4742-99de-bd72442274f3" class="bulleted-list"><li style="list-style-type:disc">Autumn</li></ul><ul id="766e1862-dcb6-4046-a8e6-2baeb6b9c59b" class="bulleted-list"><li style="list-style-type:disc">Brooke</li></ul><ul id="20c34a06-c993-4d7a-8f1e-62f98a7a993a" class="bulleted-list"><li style="list-style-type:disc">Dawn</li></ul><ul id="a9069c69-5f39-4980-a981-156e4394937a" class="bulleted-list"><li style="list-style-type:disc">Ella</li></ul><ul id="6aa956ae-4161-4c68-8890-4a33ab0db648" class="bulleted-list"><li style="list-style-type:disc">Ellen</li></ul><ul id="3570ed7a-ba39-48d8-84e7-b10556b258f0" class="bulleted-list"><li style="list-style-type:disc">Ginger</li></ul><ul id="45a29c7a-88e8-4ed0-a6a8-9d4064178db1" class="bulleted-list"><li style="list-style-type:disc">Jenny</li></ul><ul id="25ef01b9-66c4-47fd-9db5-61bbb1725e1c" class="bulleted-list"><li style="list-style-type:disc">Kayla</li></ul><ul id="ebf0a25d-1d28-4459-9241-fafdfbf9b7d3" class="bulleted-list"><li style="list-style-type:disc">Korrie</li></ul><ul id="06239ee4-4c68-41f5-a04f-7094e9cc521f" class="bulleted-list"><li style="list-style-type:disc">Lauren</li></ul><ul id="496102c2-b314-4759-8467-c55a12027a01" class="bulleted-list"><li style="list-style-type:disc">Marshanna</li></ul><ul id="b836c87e-fcee-4520-a2ef-a9562bc92ba0" class="bulleted-list"><li style="list-style-type:disc">Meredith</li></ul><ul id="551f9121-10bf-4ac3-bdba-8cbf76bdcbbd" class="bulleted-list"><li style="list-style-type:disc">Nancy</li></ul><ul id="2f5d9291-548c-4b2e-9b52-2c4d4508cfe2" class="bulleted-list"><li style="list-style-type:disc">Sally</li></ul><ul id="aac58e7a-8092-4b17-80c3-e90b3bc9ec1c" class="bulleted-list"><li style="list-style-type:disc">Selah</li></ul><ul id="428b96b7-197a-4b2c-91d6-a69fa8f9b6dc" class="bulleted-list"><li style="list-style-type:disc">Selene</li></ul><ul id="f6109a40-57fd-445b-a458-caedac7e6f69" class="bulleted-list"><li style="list-style-type:disc">Shayna</li></ul><ul id="980114bf-e20a-4e3c-92f5-41718346cc0d" class="bulleted-list"><li style="list-style-type:disc">Sheena</li></ul><ul id="5ace5289-dcd5-4d7d-9ce6-46bef38418e6" class="bulleted-list"><li style="list-style-type:disc">Shirlena</li></ul><ul id="fe4a5edf-cf7d-4293-a883-6f67d02b208f" class="bulleted-list"><li style="list-style-type:disc">Sophia</li></ul><ul id="16faf025-ec7d-43bf-b2d7-00ba7b277a33" class="bulleted-list"><li style="list-style-type:disc">Susana</li></ul><ul id="9113b2ec-8f35-44d0-9df8-d140c63d11d0" class="bulleted-list"><li style="list-style-type:disc">Terra</li></ul><ul id="51a24536-584e-4e10-8f39-c69b20010815" class="bulleted-list"><li style="list-style-type:disc">Trisha</li></ul></details></li></ul><ul id="cd9174dd-d059-4f24-b5c3-12479cbde03f" class="toggle"><li><details open=""><summary>Pirate</summary><figure id="12a8f238-6219-80cf-be38-f26c4edf9a6a" class="image"><a href="Pirate.png"><img style="width:17px" src="Pirate.png"/></a></figure><ul id="ec77ea7f-b34e-4b27-afd1-28c453064ecd" class="bulleted-list"><li style="list-style-type:disc">Black Beard</li></ul><ul id="cd7c7b5d-1389-41c4-8e5e-2cbd9e7fb519" class="bulleted-list"><li style="list-style-type:disc">Captain Bullywort</li></ul><ul id="05c2aa9c-a957-4c16-8c70-1b237f253bb1" class="bulleted-list"><li style="list-style-type:disc">Captain Morgan</li></ul><ul id="fa8209df-a5ee-4617-b841-0ed271f1d346" class="bulleted-list"><li style="list-style-type:disc">Captain Stoney Dirt</li></ul><ul id="a9544771-996f-49fb-83ee-757e181cafd5" class="bulleted-list"><li style="list-style-type:disc">David</li></ul><ul id="be45a31b-2a8e-44bc-9ffb-cdf0f53b4de7" class="bulleted-list"><li style="list-style-type:disc">Gunpowder Garry</li></ul><ul id="e8f1c796-9abe-4e3e-820c-ce0310463c87" class="bulleted-list"><li style="list-style-type:disc">Jack</li></ul><ul id="aee7b560-0a1c-4e81-9934-cfd1d7e918f4" class="bulleted-list"><li style="list-style-type:disc">Jake</li></ul><ul id="53aa371e-0040-4e2a-8332-b0b71cf1a1bc" class="bulleted-list"><li style="list-style-type:disc">James T. Beard</li></ul><ul id="50572010-6e08-49fa-aca6-a903f3d546d6" class="bulleted-list"><li style="list-style-type:disc">Red Beard</li></ul><ul id="4845f91c-4c47-4887-bb6e-ff47de8f4a4e" class="bulleted-list"><li style="list-style-type:disc">Wet Beard</li></ul></details></li></ul><ul id="3e54ccaa-6bde-4545-b06a-1ab3072199f7" class="toggle"><li><details open=""><summary>Truffle</summary><figure id="12a8f238-6219-802a-a7bf-dcd74e505fe7" class="image"><a href="Truffle.png"><img style="width:17px" src="Truffle.png"/></a></figure><ul id="22162660-0a7c-46c7-98d2-65954987b8ee" class="bulleted-list"><li style="list-style-type:disc">Agaric</li></ul><ul id="5b749fcb-f969-4e41-ad8f-07a953663464" class="bulleted-list"><li style="list-style-type:disc">Amanita</li></ul><ul id="9583907f-a98a-497b-b42d-ef30c013d644" class="bulleted-list"><li style="list-style-type:disc">Chanterelle</li></ul><ul id="2a836911-1bad-46a1-8f1d-a86507f0c51c" class="bulleted-list"><li style="list-style-type:disc">Cremini</li></ul><ul id="5ff47bee-b792-4026-913b-c1e49f00488c" class="bulleted-list"><li style="list-style-type:disc">Enoki</li></ul><ul id="98c96846-e48f-4c7c-90d0-02544171a1ee" class="bulleted-list"><li style="list-style-type:disc">Leinspores</li></ul><ul id="36c59f5a-240d-44cd-b078-e854281e4309" class="bulleted-list"><li style="list-style-type:disc">Maitake</li></ul><ul id="ac84d6f2-3c73-4fe7-aac6-0b6cab68f26c" class="bulleted-list"><li style="list-style-type:disc">Morel</li></ul><ul id="6974de2d-7b62-47b3-9f5a-60ac927f53b8" class="bulleted-list"><li style="list-style-type:disc">Muscaria</li></ul><ul id="fc7b21cd-01a1-475e-b724-36640592a5d8" class="bulleted-list"><li style="list-style-type:disc">Porcini</li></ul><ul id="accfdda1-1834-4262-afed-54e3a1f82cc2" class="bulleted-list"><li style="list-style-type:disc">Reishi</li></ul><ul id="6fcf8bfe-4b25-4cfa-b03b-0e2e2ac5fd3c" class="bulleted-list"><li style="list-style-type:disc">Shiitake</li></ul><ul id="a05d96df-d1f5-4b87-9792-f1ed429c22de" class="bulleted-list"><li style="list-style-type:disc">Shimeji</li></ul></details></li></ul><ul id="8b436122-4240-46d0-a175-b1bf839d70dd" class="toggle"><li><details open=""><summary>Wizard</summary><figure id="12a8f238-6219-8093-b7f9-d47cf2ad8b5d" class="image"><a href="Wizard.png"><img style="width:20px" src="Wizard.png"/></a></figure><ul id="f932c3d6-d8b8-47a2-a2cc-a20983307b77" class="bulleted-list"><li style="list-style-type:disc">Abram</li></ul><ul id="6b66a2c8-3110-498b-b3c2-6d4f8a3e9dcc" class="bulleted-list"><li style="list-style-type:disc">Alasdair</li></ul><ul id="934fdd52-b34d-4a0a-b541-c39c962fd4e3" class="bulleted-list"><li style="list-style-type:disc">Arddun</li></ul><ul id="cb235d34-6189-4dc2-8f71-dbac4b6647dc" class="bulleted-list"><li style="list-style-type:disc">Arwyn</li></ul><ul id="eccf4321-3c45-43d0-8f3a-b9f92a32ff8e" class="bulleted-list"><li style="list-style-type:disc">Berwyn</li></ul><ul id="585294b1-a001-405d-bc65-5f9538ef2119" class="bulleted-list"><li style="list-style-type:disc">Dalamar</li></ul><ul id="8c1b1019-81fc-4fcd-9d81-b5842af6af22" class="bulleted-list"><li style="list-style-type:disc">Dulais</li></ul><ul id="6c964369-c26b-414a-b9eb-bd513d13e236" class="bulleted-list"><li style="list-style-type:disc">Elric</li></ul><ul id="8d0f772b-02a8-403e-b920-9ac4db29e64a" class="bulleted-list"><li style="list-style-type:disc">Fizban</li></ul><ul id="6d5e4831-f2ba-49f4-a288-d6cd3ddf502f" class="bulleted-list"><li style="list-style-type:disc">Gearroid</li></ul><ul id="6c64ee09-6dc0-4247-a874-752f3b59a70f" class="bulleted-list"><li style="list-style-type:disc">Greum</li></ul><ul id="7a6dc5fd-030b-48b6-9a79-dac6852115f2" class="bulleted-list"><li style="list-style-type:disc">Gwentor</li></ul><ul id="1a488e8e-3d6a-4aac-950a-26926c2b3962" class="bulleted-list"><li style="list-style-type:disc">Hirael</li></ul><ul id="012506ed-097b-41db-91cb-838d63784d71" class="bulleted-list"><li style="list-style-type:disc">Leomund</li></ul><ul id="4dde2633-a4d6-43d5-9fe0-dcc6e94ebe2d" class="bulleted-list"><li style="list-style-type:disc">Maelor</li></ul><ul id="1741b566-6be8-4290-a293-59eb068e8f98" class="bulleted-list"><li style="list-style-type:disc">Magius</li></ul><ul id="e89198cf-6880-4940-9358-1763d27519b1" class="bulleted-list"><li style="list-style-type:disc">Merlyn</li></ul><ul id="1a947a35-713f-4b0d-b346-7ec813be9b84" class="bulleted-list"><li style="list-style-type:disc">Ningauble</li></ul><ul id="97baa642-61db-4a3a-b1a7-59a2c78dcd6a" class="bulleted-list"><li style="list-style-type:disc">Sargon</li></ul><ul id="773a33ba-b8ed-49db-b8ab-f99e1c9bb78b" class="bulleted-list"><li style="list-style-type:disc">Seonag</li></ul><ul id="917c907b-329d-4980-a619-08978f7c3c1d" class="bulleted-list"><li style="list-style-type:disc">Tagar</li></ul><ul id="7f1a6c78-471d-4e40-ad47-0d36e0343fdc" class="bulleted-list"><li style="list-style-type:disc">Xanadu</li></ul></details></li></ul><ul id="36937157-3379-413f-b3bc-a965a6e4ca8e" class="toggle"><li><details open=""><summary>Tax Collector</summary><figure id="12a8f238-6219-8027-9f70-f73f0f79fd4a" class="image"><a href="Tax_Collector.png"><img style="width:23px" src="Tax_Collector.png"/></a></figure><ul id="b16c1ae6-887d-46cf-ab4d-c0c0e5ef7b47" class="bulleted-list"><li style="list-style-type:disc">Agnew</li></ul><ul id="9b41bb08-77d3-4e35-9a9d-85489bf3c79e" class="bulleted-list"><li style="list-style-type:disc">Blanton</li></ul><ul id="8682ea99-6447-46db-b90a-63ee0203b0e6" class="bulleted-list"><li style="list-style-type:disc">Carroll</li></ul><ul id="35e3e785-cc09-4ddd-bcf9-0d8081b6ab2e" class="bulleted-list"><li style="list-style-type:disc">Chester</li></ul><ul id="efa2d10b-cbbc-4d24-9aa3-cce9b19e9f8f" class="bulleted-list"><li style="list-style-type:disc">Cleveland</li></ul><ul id="877f39a1-274e-4609-92ea-4c06d7b755e3" class="bulleted-list"><li style="list-style-type:disc">Dwyer</li></ul><ul id="e47a0970-b10f-46bb-b30d-eb403f8e06ff" class="bulleted-list"><li style="list-style-type:disc">Fillmore</li></ul><ul id="7ffcac8f-5d58-4f67-b075-8b371028f3e9" class="bulleted-list"><li style="list-style-type:disc">Grover</li></ul><ul id="95f4bae7-6ec0-4ac4-93f7-fba5d97b1b28" class="bulleted-list"><li style="list-style-type:disc">Harrison</li></ul><ul id="093da8ae-82fc-4953-a1c0-cb102c71f45a" class="bulleted-list"><li style="list-style-type:disc">Herbert</li></ul><ul id="a308f5f1-684b-4ece-9f06-c43a1bea4df3" class="bulleted-list"><li style="list-style-type:disc">Lyndon</li></ul><ul id="56fade4b-15d1-4bd3-947c-d1922232d47d" class="bulleted-list"><li style="list-style-type:disc">McKinly</li></ul><ul id="e9bc839b-125d-437a-9b5d-0b2819ef4607" class="bulleted-list"><li style="list-style-type:disc">Millard</li></ul><ul id="de1d6c9d-1bb2-4604-9d96-3a3f60d5ccf9" class="bulleted-list"><li style="list-style-type:disc">Ronald</li></ul><ul id="775bf3ad-bb96-4c5f-8399-04bbdaa6d2a0" class="bulleted-list"><li style="list-style-type:disc">Rutherford</li></ul><ul id="785d8f71-4802-438b-bc65-61fb11a71137" class="bulleted-list"><li style="list-style-type:disc">Theodore</li></ul><ul id="3a942825-ee38-4e16-9630-f3f5c8f673a9" class="bulleted-list"><li style="list-style-type:disc">Tweed</li></ul><ul id="01b06925-1726-4161-b823-da9ceb97b5fc" class="bulleted-list"><li style="list-style-type:disc">Warren</li></ul><ul id="9eecbba4-bb28-4f80-8175-9045b95a98d0" class="bulleted-list"><li style="list-style-type:disc">Woodrow</li></ul></details></li></ul><ul id="85ebc376-90cd-4275-aba8-20f6d59cda3b" class="toggle"><li><details open=""><summary>Steampunker</summary><figure id="12a8f238-6219-8060-8a15-ff244dd3ab4c" class="image"><a href="Steampunker.png"><img style="width:14px" src="Steampunker.png"/></a></figure><ul id="d47c4d8e-9129-41e7-9798-9c7e3fa55e7c" class="bulleted-list"><li style="list-style-type:disc">Ada</li></ul><ul id="7f2d7205-1d03-4354-9ef2-0af4b4947e0b" class="bulleted-list"><li style="list-style-type:disc">Cornelia</li></ul><ul id="6916e6b9-39f0-4890-9eef-51287c319686" class="bulleted-list"><li style="list-style-type:disc">Cynthia</li></ul><ul id="7f40e9cb-62f1-48f7-9361-79813dd4f81a" class="bulleted-list"><li style="list-style-type:disc">Emeline</li></ul><ul id="eea71978-13a0-4d80-822b-4841ba422980" class="bulleted-list"><li style="list-style-type:disc">Fidelia</li></ul><ul id="1847cc9b-bc69-4a6e-a66b-7b7937876377" class="bulleted-list"><li style="list-style-type:disc">Hope</li></ul><ul id="02de121b-2f3d-4347-ba60-3e053187558e" class="bulleted-list"><li style="list-style-type:disc">Isabella</li></ul><ul id="78b20167-7d77-4606-8a9e-9939ffe347c8" class="bulleted-list"><li style="list-style-type:disc">Judith</li></ul><ul id="3f121b34-65af-4252-ba59-49c16a4208bf" class="bulleted-list"><li style="list-style-type:disc">Leila</li></ul><ul id="10a67d92-eca4-423e-8eef-7e30e4b13638" class="bulleted-list"><li style="list-style-type:disc">Lilly</li></ul><ul id="c3a72fc3-d74d-4028-91c1-f66329a4e6b8" class="bulleted-list"><li style="list-style-type:disc">Lydia</li></ul><ul id="2e2db998-2550-4f5d-9ce3-6f9b22db7cc9" class="bulleted-list"><li style="list-style-type:disc">Minerva</li></ul><ul id="e74b728c-5a8e-488c-9251-e1722d45cdbc" class="bulleted-list"><li style="list-style-type:disc">Phoebe</li></ul><ul id="2e51efd5-96dc-4b45-8cc5-e3cf7b6d4e87" class="bulleted-list"><li style="list-style-type:disc">Savannah</li></ul><ul id="c0399eff-5fc8-4f09-8e7a-92e8a1dddbfe" class="bulleted-list"><li style="list-style-type:disc">Selina</li></ul><ul id="a2656891-87d1-4143-8e23-712dab356839" class="bulleted-list"><li style="list-style-type:disc">Verity</li></ul><ul id="05d9d5ed-650f-4f75-bbba-2dea4c5a6acd" class="bulleted-list"><li style="list-style-type:disc">Vivian</li></ul><ul id="c6ab639c-6922-4436-a174-0b39604ba972" class="bulleted-list"><li style="list-style-type:disc">Whitney</li></ul><ul id="29244d88-3561-4f60-928e-4d5f0d267aa9" class="bulleted-list"><li style="list-style-type:disc">Zelda</li></ul><ul id="c46731a4-3cca-4eea-8d3c-28036f432bc1" class="bulleted-list"><li style="list-style-type:disc">Zylphia</li></ul></details></li></ul><ul id="501f0151-bf8b-468b-bd6b-a6f107444ec0" class="toggle"><li><details open=""><summary>Cyborg</summary><figure id="12a8f238-6219-8032-90fd-cccf2ede5189" class="image"><a href="Cyborg.png"><img style="width:16px" src="Cyborg.png"/></a></figure><ul id="b3b32de4-a56d-4790-87f7-85cbc4ada6d2" class="bulleted-list"><li style="list-style-type:disc">A.N.D.Y.</li></ul><ul id="530a1943-28bf-4747-98f4-4e56dae8a815" class="bulleted-list"><li style="list-style-type:disc">Alpha</li></ul><ul id="ecde8be9-ad8f-49c0-9927-a7211b40b0db" class="bulleted-list"><li style="list-style-type:disc">Beta</li></ul><ul id="aa990d12-8fcf-4404-bad6-a9d5b425e05e" class="bulleted-list"><li style="list-style-type:disc">Ci</li></ul><ul id="174d3560-36bb-4804-9f12-92da0b3a376c" class="bulleted-list"><li style="list-style-type:disc">Delta</li></ul><ul id="56b863a9-2b9e-4afa-b1ca-9a4d7c3f48f2" class="bulleted-list"><li style="list-style-type:disc">Fender</li></ul><ul id="ba47f721-8204-4e8d-8656-257f03611152" class="bulleted-list"><li style="list-style-type:disc">Gamma</li></ul><ul id="75fdc4f1-35d7-49ea-b020-01f9c55121c2" class="bulleted-list"><li style="list-style-type:disc">Kappa</li></ul><ul id="1825ec56-39db-44c9-b3c9-ea2ac75a72f8" class="bulleted-list"><li style="list-style-type:disc">Lambda</li></ul><ul id="3675e303-194c-4571-90a6-9961852f9fab" class="bulleted-list"><li style="list-style-type:disc">Mu</li></ul><ul id="33cb2bdc-112c-4bb8-ac8d-912856a1c450" class="bulleted-list"><li style="list-style-type:disc">Niner-7</li></ul><ul id="8bee1a5e-43c2-49f4-b8eb-62ddd6c875ee" class="bulleted-list"><li style="list-style-type:disc">Nu</li></ul><ul id="5fd3c2cd-dd85-4a4f-a24c-8b36bc209a61" class="bulleted-list"><li style="list-style-type:disc">Omega</li></ul><ul id="ed96fcc4-acff-43fc-8982-0b9de885091f" class="bulleted-list"><li style="list-style-type:disc">Omicron</li></ul><ul id="66077e68-9aae-4c6b-8269-3b2e7a59c27b" class="bulleted-list"><li style="list-style-type:disc">Phi</li></ul><ul id="378e0430-128a-4706-8bc5-0c31031f6924" class="bulleted-list"><li style="list-style-type:disc">Raynbro</li></ul><ul id="8fa8b173-92aa-4091-a010-769febd3cd3e" class="bulleted-list"><li style="list-style-type:disc">Rho</li></ul><ul id="959a18d2-13cc-4ac6-a790-53df46d3ee91" class="bulleted-list"><li style="list-style-type:disc">Sigma</li></ul><ul id="1b7ba980-7323-477d-8a1d-72e48e8c2e3a" class="bulleted-list"><li style="list-style-type:disc">Syn-X</li></ul><ul id="29ad392e-ae9d-461c-9b7d-e2d121e06036" class="bulleted-list"><li style="list-style-type:disc">T-3E0</li></ul><ul id="f1a45cf2-c20e-4b48-be9e-60f78898173b" class="bulleted-list"><li style="list-style-type:disc">Theta</li></ul><ul id="a6a779a8-b6f8-4a30-afcb-d350893b8b19" class="bulleted-list"><li style="list-style-type:disc">Upsilon</li></ul><ul id="eea4e2bd-71d5-4417-8c30-08a708e2e85b" class="bulleted-list"><li style="list-style-type:disc">Zeta</li></ul></details></li></ul><ul id="2c831bd6-3e20-44ed-b5ca-cacc11fe16fc" class="toggle"><li><details open=""><summary>Zoologist</summary><figure id="12a8f238-6219-8006-af1c-f26a74357948" class="image"><a href="Zoologist.png"><img style="width:21px" src="Zoologist.png"/></a></figure><ul id="f08f1042-a29d-4d50-962c-b9c034b18d5b" class="bulleted-list"><li style="list-style-type:disc">Arien</li></ul><ul id="3cc4a1c4-1fef-4448-8f65-45e5759820e1" class="bulleted-list"><li style="list-style-type:disc">Astra</li></ul><ul id="b736652e-c9c1-406a-b21e-360d459376fa" class="bulleted-list"><li style="list-style-type:disc">Azaria</li></ul><ul id="4fb7578b-0fce-47a0-a758-e1f94e482723" class="bulleted-list"><li style="list-style-type:disc">Becca</li></ul><ul id="d54bbd84-4c43-4714-8935-7a5e4d3d6452" class="bulleted-list"><li style="list-style-type:disc">Bindi</li></ul><ul id="e53aed1e-22bc-4128-a622-d695d8ebec23" class="bulleted-list"><li style="list-style-type:disc">Daphne</li></ul><ul id="34821780-2ed0-4c64-af04-60b5e5899563" class="bulleted-list"><li style="list-style-type:disc">Dian</li></ul><ul id="b43991e0-f4de-4944-b229-3f3b5d4c3444" class="bulleted-list"><li style="list-style-type:disc">Ellen</li></ul><ul id="583e8c39-0098-47b2-b64a-ec4fe375ba46" class="bulleted-list"><li style="list-style-type:disc">Hayley</li></ul><ul id="7c18e003-b5d5-471e-9423-301fd69bd902" class="bulleted-list"><li style="list-style-type:disc">Jane</li></ul><ul id="8a2101a1-9d94-458d-80ae-b5648f800845" class="bulleted-list"><li style="list-style-type:disc">Juanita</li></ul><ul id="d40b5690-5c89-47e4-a0f6-349ce3693ebd" class="bulleted-list"><li style="list-style-type:disc">Lilith</li></ul><ul id="cb7c847a-a943-4039-baf7-7f3353b4f343" class="bulleted-list"><li style="list-style-type:disc">Lizzy</li></ul><ul id="78400f88-52a7-4494-b42a-51c567f2fac9" class="bulleted-list"><li style="list-style-type:disc">Lori</li></ul><ul id="f1741ec7-89cf-4efa-a54f-6e587557cacc" class="bulleted-list"><li style="list-style-type:disc">MacKenzie</li></ul><ul id="abcab9db-880f-436e-ba8f-453e5112172d" class="bulleted-list"><li style="list-style-type:disc">Mardy</li></ul><ul id="70d00e60-80b3-4a5e-a398-d84ba6620f46" class="bulleted-list"><li style="list-style-type:disc">Maria</li></ul><ul id="de565511-f454-45f9-a7a5-6a766e011167" class="bulleted-list"><li style="list-style-type:disc">Mollie</li></ul><ul id="fdfee020-a39f-47b3-8122-a6b53b57dbc3" class="bulleted-list"><li style="list-style-type:disc">Robyn</li></ul><ul id="027b85ff-a0ca-4fe1-ae12-f22e3553722a" class="bulleted-list"><li style="list-style-type:disc">Tia</li></ul><ul id="5da049bd-7bee-4b8a-b761-d01b5bd25e95" class="bulleted-list"><li style="list-style-type:disc">Veronica</li></ul></details></li></ul><ul id="cdfbec93-7404-447f-a7e3-33040b1afc82" class="toggle"><li><details open=""><summary>Princess</summary><figure id="12a8f238-6219-80ab-92dc-d7de9c4a0489" class="image"><a href="Princess.png"><img style="width:22px" src="Princess.png"/></a></figure><ul id="60d8b62a-f87e-44c0-ace9-94d2862bc312" class="bulleted-list"><li style="list-style-type:disc">Ai</li></ul><ul id="e952a1bb-d344-4b88-8b90-3c35487a1379" class="bulleted-list"><li style="list-style-type:disc">Alice</li></ul><ul id="befbe31c-b386-4a51-85b0-70e08cd0bce4" class="bulleted-list"><li style="list-style-type:disc">Aria</li></ul><ul id="b110c75c-7c6a-4416-b229-27ab0af537df" class="bulleted-list"><li style="list-style-type:disc">Ariel</li></ul><ul id="67d80660-710c-455a-bde7-2495fae89cc7" class="bulleted-list"><li style="list-style-type:disc">Belle</li></ul><ul id="ef9adb8f-3d3d-43ed-850b-f91238640d8d" class="bulleted-list"><li style="list-style-type:disc">Charlotte</li></ul><ul id="796f197e-4b23-4a48-882a-653b89661e07" class="bulleted-list"><li style="list-style-type:disc">Christina</li></ul><ul id="8042e568-ffb6-4a1e-9e4e-c4d6f19f286e" class="bulleted-list"><li style="list-style-type:disc">Elitia</li></ul><ul id="5f69fa1d-80cd-425d-b9bb-e0d4ffae1109" class="bulleted-list"><li style="list-style-type:disc">Emilia</li></ul><ul id="b7455595-1e86-45ed-a94f-1fbf6e542e43" class="bulleted-list"><li style="list-style-type:disc">Faye</li></ul><ul id="c36ed17b-4441-4537-8f10-b9c52692c33b" class="bulleted-list"><li style="list-style-type:disc">Flora</li></ul><ul id="e0d46e13-b511-4acf-9b94-6d6c117c3087" class="bulleted-list"><li style="list-style-type:disc">Hikari</li></ul><ul id="4928c3b6-49c0-4459-bc65-b70266476e18" class="bulleted-list"><li style="list-style-type:disc">Hime</li></ul><ul id="624d920b-109c-4015-ade1-7a0e845bca00" class="bulleted-list"><li style="list-style-type:disc">Liselotte</li></ul><ul id="700f1719-69d0-4053-9995-cea8f766ee58" class="bulleted-list"><li style="list-style-type:disc">Lucia</li></ul><ul id="fa2b619d-3349-4f99-98d0-4d7d36baaf4c" class="bulleted-list"><li style="list-style-type:disc">Momo</li></ul><ul id="0581a36b-a741-423b-b358-13a77751dee2" class="bulleted-list"><li style="list-style-type:disc">Rosetta</li></ul><ul id="c27ba61f-12ce-4599-96a5-2bc5c15d6afa" class="bulleted-list"><li style="list-style-type:disc">Sophia</li></ul><ul id="54401cc7-f05e-4cd6-ac75-f8317cf3370e" class="bulleted-list"><li style="list-style-type:disc">Theresa</li></ul><ul id="3be103ea-0b33-4de2-b58e-393de6da3538" class="bulleted-list"><li style="list-style-type:disc">Tiara</li></ul><ul id="cfaba4b8-c843-4961-b065-c003a5a06dfd" class="bulleted-list"><li style="list-style-type:disc">Yorai</li></ul><ul id="6e4819c0-e385-4fe1-a7f7-00c6d18bb31e" class="bulleted-list"><li style="list-style-type:disc">Yuuki</li></ul></details></li></ul><ul id="ff92b8ae-c5ec-4d1a-a2a3-af2f298b133a" class="toggle"><li><details open=""><summary>Town Cats</summary><figure id="12a8f238-6219-800d-b30d-eafc9260d29d" class="image"><a href="Town_Cat.gif"><img style="width:32px" src="Town_Cat.gif"/></a></figure><ul id="4abb8ab9-d1a0-4e6d-a012-1b31237e2a64" class="toggle"><li><details open=""><summary>Siamese</summary><figure id="12a8f238-6219-801a-a6bd-c6df220afb9c" class="image"><a href="Siamese_Cat.png"><img style="width:32px" src="Siamese_Cat.png"/></a></figure><ul id="873ad8e8-07c7-4b46-aac3-bc9732474235" class="bulleted-list"><li style="list-style-type:disc">Bandit</li></ul><ul id="4a5b13b6-1f8d-4b6d-b873-16dbef560ea4" class="bulleted-list"><li style="list-style-type:disc">Callie</li></ul><ul id="5b99c147-30be-4844-b6bf-62cb939edfe2" class="bulleted-list"><li style="list-style-type:disc">Cleo</li></ul><ul id="c9db994f-444d-4e75-a033-3c8e9f5e3d6a" class="bulleted-list"><li style="list-style-type:disc">Goliath</li></ul><ul id="17a53f27-e842-470b-b437-8bc60c3483d5" class="bulleted-list"><li style="list-style-type:disc">Iris</li></ul><ul id="a7d7fb97-0a2b-428a-92e4-e2fa3a005c12" class="bulleted-list"><li style="list-style-type:disc">Nust</li></ul><ul id="5c61abbe-1c5f-42f8-a01e-980962f53fb4" class="bulleted-list"><li style="list-style-type:disc">Rainha</li></ul><ul id="be035b08-068a-4dc8-bf6b-1897377b858a" class="bulleted-list"><li style="list-style-type:disc">Sappho</li></ul><ul id="60dd5082-d8c4-4c49-a587-31a408bd827d" class="bulleted-list"><li style="list-style-type:disc">Sekhmet</li></ul><ul id="c7c75bb2-0e6b-4c64-9c19-0ae8c5f3d361" class="bulleted-list"><li style="list-style-type:disc">Socks</li></ul><ul id="283ae64e-bc8c-4f6c-b48e-266dd981dfc6" class="bulleted-list"><li style="list-style-type:disc">Valerie</li></ul><ul id="b80a3a74-4a86-4794-a3ed-9273319558f8" class="bulleted-list"><li style="list-style-type:disc">Zen</li></ul></details></li></ul><ul id="996b5e71-9ec9-475e-ba3e-4daa21fca480" class="toggle"><li><details open=""><summary>Black</summary><figure id="12a8f238-6219-8004-b81f-dae8d4aa458a" class="image"><a href="Black_Cat_(town).png"><img style="width:32px" src="Black_Cat_(town).png"/></a></figure><ul id="dea3c69b-6900-40e3-839b-1689eb8b4ab3" class="bulleted-list"><li style="list-style-type:disc">Arbus</li></ul><ul id="7ec97f60-8b78-442c-b6c4-02bf58999c2a" class="bulleted-list"><li style="list-style-type:disc">Bella</li></ul><ul id="8f09c439-8ed0-41d4-a1e1-6f5d6efc363c" class="bulleted-list"><li style="list-style-type:disc">Damien</li></ul><ul id="9e4b52b7-f079-43d1-83d4-9c5a844b6963" class="bulleted-list"><li style="list-style-type:disc">Ember</li></ul><ul id="80555d86-e389-4bbe-a1f7-bb6bd66360a3" class="bulleted-list"><li style="list-style-type:disc">Esper</li></ul><ul id="44cd8b9e-3d5d-4617-afe2-8f5719ecbaaf" class="bulleted-list"><li style="list-style-type:disc">Figment</li></ul><ul id="926a6b3f-4dde-42a1-8fea-a561ec5713af" class="bulleted-list"><li style="list-style-type:disc">Gargoyle</li></ul><ul id="84fb5b14-79e2-4ec1-9aed-1f32f01d0a28" class="bulleted-list"><li style="list-style-type:disc">George</li></ul><ul id="0d6d2670-6ae8-4bc4-bdcb-bd82f7153216" class="bulleted-list"><li style="list-style-type:disc">Jaspers</li></ul><ul id="fddd6877-6f0a-4ee5-b037-51fd97cc9f2c" class="bulleted-list"><li style="list-style-type:disc">Jiji</li></ul><ul id="fad125aa-c259-46a1-bc97-3feb42b0a0d6" class="bulleted-list"><li style="list-style-type:disc">Lilith</li></ul><ul id="c18c6275-0484-46c4-b33a-1b4893b076b0" class="bulleted-list"><li style="list-style-type:disc">Luna</li></ul><ul id="00566f96-b8bf-4529-ae44-6a3c94955a52" class="bulleted-list"><li style="list-style-type:disc">Magic</li></ul><ul id="1a36e880-cdbf-43bb-92c8-0304076c9f6d" class="bulleted-list"><li style="list-style-type:disc">Max</li></ul><ul id="dabba5a7-587f-45ac-9c69-106af325d93f" class="bulleted-list"><li style="list-style-type:disc">Misu</li></ul><ul id="5fd31712-027f-4dd1-a6a0-907106a679ed" class="bulleted-list"><li style="list-style-type:disc">Morgan</li></ul><ul id="dda1a30e-c0a8-4e71-a663-7ceb0571f32a" class="bulleted-list"><li style="list-style-type:disc">Night</li></ul><ul id="3d97e016-4be2-4b10-a59a-ad59f55bd495" class="bulleted-list"><li style="list-style-type:disc">Odin</li></ul><ul id="af2cad80-642e-4f00-87b0-b34f58c7a761" class="bulleted-list"><li style="list-style-type:disc">Rascal</li></ul><ul id="5eb327a9-9235-4b6b-beee-3a64906ee8a9" class="bulleted-list"><li style="list-style-type:disc">Salem</li></ul><ul id="ce85f865-88e8-43f1-be5b-af4bd7ce59a9" class="bulleted-list"><li style="list-style-type:disc">Snowball</li></ul><ul id="9362830f-c007-475a-ae85-adb246d78d8b" class="bulleted-list"><li style="list-style-type:disc">Tonic</li></ul><ul id="b1c1a1fa-c808-4f6c-9f3a-d15673b71c99" class="bulleted-list"><li style="list-style-type:disc">Violet</li></ul></details></li></ul><ul id="8677f702-7305-4990-95fe-dd88e3c098f8" class="toggle"><li><details open=""><summary>Orange Tabby</summary><figure id="12a8f238-6219-80c2-ae39-e5d51f5dd067" class="image"><a href="Orange_Tabby_Cat.png"><img style="width:32px" src="Orange_Tabby_Cat.png"/></a></figure><ul id="f44716a3-76c0-4799-9c97-cd5dcbbffb78" class="bulleted-list"><li style="list-style-type:disc">Adol</li></ul><ul id="7880b8bd-0131-4b6e-896a-cee45ffbc336" class="bulleted-list"><li style="list-style-type:disc">Bob</li></ul><ul id="63731b1d-c6bb-4b89-af5a-f3816671bdf7" class="bulleted-list"><li style="list-style-type:disc">Callie</li></ul><ul id="0d18a80a-9bcd-467e-8d09-ef7fb7cefa06" class="bulleted-list"><li style="list-style-type:disc">Caramel</li></ul><ul id="0208c5f4-0e73-4a50-a44a-049887cf879b" class="bulleted-list"><li style="list-style-type:disc">Charlie</li></ul><ul id="7686e079-5a24-4eb5-b826-1bde450102de" class="bulleted-list"><li style="list-style-type:disc">Critter</li></ul><ul id="484e86c1-2609-4574-a51d-ded6acfe0be9" class="bulleted-list"><li style="list-style-type:disc">Garfield</li></ul><ul id="7b858d20-2030-4337-a56b-41643d93a9be" class="bulleted-list"><li style="list-style-type:disc">Hobbes</li></ul><ul id="758ac9b1-09ea-4b16-9941-bda0033fa2a5" class="bulleted-list"><li style="list-style-type:disc">Leo</li></ul><ul id="847e3763-e9aa-4e6e-999c-77350a4c3cc0" class="bulleted-list"><li style="list-style-type:disc">Linkle</li></ul><ul id="b47f6e0f-96e9-4144-9e81-60c06d0491de" class="bulleted-list"><li style="list-style-type:disc">Lux</li></ul><ul id="e28f0fdd-c24e-4bd7-844e-47b10ad3fc5d" class="bulleted-list"><li style="list-style-type:disc">Rascal</li></ul><ul id="f99b0425-7d46-4700-825b-b0f2f327959d" class="bulleted-list"><li style="list-style-type:disc">Remy</li></ul><ul id="6c148f2d-a265-4d7c-b486-d44211cf1ffc" class="bulleted-list"><li style="list-style-type:disc">Sassy</li></ul><ul id="6621e0c4-e4c8-49ca-8cc7-6301e3c08807" class="bulleted-list"><li style="list-style-type:disc">Sunny</li></ul><ul id="8bc66d3d-7e41-440e-af2b-4a93bf0cde4a" class="bulleted-list"><li style="list-style-type:disc">Tiger</li></ul><ul id="1fda3952-7379-4786-9f32-6234e94ccdcd" class="bulleted-list"><li style="list-style-type:disc">Tigger</li></ul><ul id="7aa69657-3447-4115-adaf-96e8631aa8ae" class="bulleted-list"><li style="list-style-type:disc">Tony</li></ul></details></li></ul><ul id="89246096-0cea-4d9a-9854-7dd4b9c0b6ce" class="toggle"><li><details open=""><summary>Russian Blue</summary><figure id="12a8f238-6219-806a-a3c9-e68c88fc4ee5" class="image"><a href="Russian_Blue_Cat.png"><img style="width:32px" src="Russian_Blue_Cat.png"/></a></figure><ul id="68f2fdd0-360f-4cbb-a0b8-22d60fca0d32" class="bulleted-list"><li style="list-style-type:disc">Alexi</li></ul><ul id="2761299c-e2c8-4675-b93c-41899d4835c3" class="bulleted-list"><li style="list-style-type:disc">Bubbles</li></ul><ul id="328a176f-97a6-4c58-8c07-fb8228116c1c" class="bulleted-list"><li style="list-style-type:disc">Cobalt</li></ul><ul id="62f1123f-e229-48fe-807f-ede99ea607ad" class="bulleted-list"><li style="list-style-type:disc">Jocelyn</li></ul><ul id="c2201c3e-7af3-4b6f-b11c-7d1bdeac30d9" class="bulleted-list"><li style="list-style-type:disc">Lexi</li></ul><ul id="a3019a6d-53d0-4852-811b-e6c6ac3f3b1a" class="bulleted-list"><li style="list-style-type:disc">Light</li></ul><ul id="a70a8d80-1c83-4e35-bef8-85949e2e63a5" class="bulleted-list"><li style="list-style-type:disc">Lily</li></ul><ul id="4b832984-4026-4300-9d2e-0b6e427c936c" class="bulleted-list"><li style="list-style-type:disc">Lucy</li></ul><ul id="296a5f4c-5432-4e3b-9e00-8ecc3f05bc8c" class="bulleted-list"><li style="list-style-type:disc">Momo</li></ul><ul id="001cd52c-9f45-4d59-ae52-1df30a317250" class="bulleted-list"><li style="list-style-type:disc">Pete</li></ul><ul id="7253a920-7f42-46d5-976d-a7f82a1db2b6" class="bulleted-list"><li style="list-style-type:disc">Prissy</li></ul><ul id="61fc8150-2e87-481e-bdd9-95cab69c6bd9" class="bulleted-list"><li style="list-style-type:disc">Rion</li></ul><ul id="7e72093e-76f8-4585-b605-9784570c1e0f" class="bulleted-list"><li style="list-style-type:disc">Ruby</li></ul><ul id="749a48d0-68ad-4db5-bd5e-11a3173ad5f1" class="bulleted-list"><li style="list-style-type:disc">Starlight</li></ul><ul id="2fd32505-7fb5-4868-a882-76d9e4eb7fa2" class="bulleted-list"><li style="list-style-type:disc">Tarzan</li></ul><ul id="14571cfb-e688-45da-8b0e-0e2de9e1334c" class="bulleted-list"><li style="list-style-type:disc">Tilly</li></ul><ul id="702b4124-7520-4ba1-b9bf-477c0b9b67f2" class="bulleted-list"><li style="list-style-type:disc">Valery</li></ul></details></li></ul><ul id="3e1e9ab4-7faf-4cd5-af52-c02afe829852" class="toggle"><li><details open=""><summary>Silver</summary><figure id="12a8f238-6219-8090-87c9-ce46a9b4c1fb" class="image"><a href="Silver_Cat.png"><img style="width:34px" src="Silver_Cat.png"/></a></figure><ul id="b560911b-a58f-4735-aaf8-484fcf908abf" class="bulleted-list"><li style="list-style-type:disc">Ange</li></ul><ul id="19cd16a3-32c1-4811-91c0-b32ac0a4554b" class="bulleted-list"><li style="list-style-type:disc">Blaze</li></ul><ul id="a18c52b6-5fb6-4f40-9810-9e5de2834592" class="bulleted-list"><li style="list-style-type:disc">By-Tor</li></ul><ul id="e0a47650-d562-4341-ba59-cc6ed83ee6aa" class="bulleted-list"><li style="list-style-type:disc">Cloud</li></ul><ul id="088c7ff6-f886-4f0f-8e1f-71293247ffb3" class="bulleted-list"><li style="list-style-type:disc">Cutie</li></ul><ul id="28e44e5d-f983-4f40-a851-4d07d81c609f" class="bulleted-list"><li style="list-style-type:disc">Freya</li></ul><ul id="e47e34fe-cea1-4bcf-a023-f890db8defc6" class="bulleted-list"><li style="list-style-type:disc">Kanako</li></ul><ul id="673f8c8a-126f-473d-a189-d699b23fe28b" class="bulleted-list"><li style="list-style-type:disc">Kelly</li></ul><ul id="16f3d59c-d9e9-4fb3-af7f-d26d6acce996" class="bulleted-list"><li style="list-style-type:disc">Kiva</li></ul><ul id="1ca73b2f-a954-40cb-8d66-16b7451278ac" class="bulleted-list"><li style="list-style-type:disc">Merlin</li></ul><ul id="a33bf8a3-bf75-4c7d-8d43-18966e09cf65" class="bulleted-list"><li style="list-style-type:disc">Miette</li></ul><ul id="c60842a0-11b5-4527-acbd-2fff1c8050be" class="bulleted-list"><li style="list-style-type:disc">Nana</li></ul><ul id="dfb2ea4b-eb82-4bc9-8e2f-8450e8af6030" class="bulleted-list"><li style="list-style-type:disc">Polo</li></ul><ul id="c6301acd-1255-44bb-b6df-bd2537884a8f" class="bulleted-list"><li style="list-style-type:disc">Rebus</li></ul><ul id="a1d96e15-3e69-49ec-909a-dba5f2e249a3" class="bulleted-list"><li style="list-style-type:disc">Renne</li></ul><ul id="6bcb8871-f3ac-42dc-b482-f20cc7acfe55" class="bulleted-list"><li style="list-style-type:disc">Roo</li></ul><ul id="ac2e755b-fa6a-424b-8f2e-ad33b33cf4d2" class="bulleted-list"><li style="list-style-type:disc">Sooty</li></ul><ul id="c218ddef-3163-4400-8c66-ee9e2bb776c8" class="bulleted-list"><li style="list-style-type:disc">Trudy</li></ul><ul id="1af26f99-a0f2-462f-b78e-34fd5b6362e7" class="bulleted-list"><li style="list-style-type:disc">Tula</li></ul></details></li></ul><ul id="6f4d80cd-eeec-4e5b-8f72-36d3afe4a1f3" class="toggle"><li><details open=""><summary>White</summary><figure id="12a8f238-6219-80de-901f-d07e3a673ca7" class="image"><a href="White_Cat.png"><img style="width:32px" src="White_Cat.png"/></a></figure><ul id="91810622-d8cf-4c6d-85d9-317dedd56d99" class="bulleted-list"><li style="list-style-type:disc">Angel</li></ul><ul id="f22534c0-da8d-4d15-bdc9-ad6f52012cc0" class="bulleted-list"><li style="list-style-type:disc">Ater</li></ul><ul id="60a4a8db-fd4e-4c60-8db9-8f1c78deaafa" class="bulleted-list"><li style="list-style-type:disc">Belle</li></ul><ul id="26f223fd-b5f8-4d7f-8897-2fcd2a641897" class="bulleted-list"><li style="list-style-type:disc">Gemma</li></ul><ul id="b494846c-08c5-4232-b741-4c0de6b871c7" class="bulleted-list"><li style="list-style-type:disc">Holly</li></ul><ul id="ca43ab55-1fb2-4dbb-8fec-ef181c046ab6" class="bulleted-list"><li style="list-style-type:disc">Ichibi</li></ul><ul id="203822d5-29dc-463c-b6b0-917705bfca56" class="bulleted-list"><li style="list-style-type:disc">Misty</li></ul><ul id="d455fc76-bf01-494b-b4a6-26553069a4bf" class="bulleted-list"><li style="list-style-type:disc">Mr. Cat</li></ul><ul id="6b5f1035-9230-4f93-b81e-e8eb5fe75b76" class="bulleted-list"><li style="list-style-type:disc">Reah</li></ul><ul id="d70b6881-0e97-41f5-b11c-9a8b564b4080" class="bulleted-list"><li style="list-style-type:disc">Rory</li></ul><ul id="990e2248-3aec-4784-82dc-058d3b49c9c7" class="bulleted-list"><li style="list-style-type:disc">Sam</li></ul><ul id="c0516768-aa1f-42f7-b152-ef588a4b86d4" class="bulleted-list"><li style="list-style-type:disc">Snowball</li></ul><ul id="181c02e3-c260-4745-8413-206158205ab6" class="bulleted-list"><li style="list-style-type:disc">Snowdrop</li></ul><ul id="f4ea9a7b-173c-4680-b1a0-b3b161274dc8" class="bulleted-list"><li style="list-style-type:disc">Storm</li></ul><ul id="b0ced2ee-e988-49ce-9c6a-3e424cb2b3c3" class="bulleted-list"><li style="list-style-type:disc">Vincent</li></ul><ul id="ae999af3-9568-495a-9d35-c1cf62673c2c" class="bulleted-list"><li style="list-style-type:disc">Yuki</li></ul></details></li></ul></details></li></ul><ul id="216425f8-088a-4d16-8e79-6f643f8b365b" class="toggle"><li><details open=""><summary>Town Dogs</summary><figure id="12a8f238-6219-8094-acb8-d05343d04599" class="image"><a href="Town_Dog.gif"><img style="width:32px" src="Town_Dog.gif"/></a></figure><ul id="687c73f2-4217-4625-bc1e-be0f75d257f7" class="toggle"><li><details open=""><summary>Labrador</summary><figure id="12a8f238-6219-8031-ab90-f253342975d3" class="image"><a href="Labrador.png"><img style="width:54px" src="Labrador.png"/></a></figure><ul id="f16c1c70-2245-4e97-9500-bb89d0a49d75" class="bulleted-list"><li style="list-style-type:disc">Arthur</li></ul><ul id="110487b6-a533-4f41-a693-b224ce1201de" class="bulleted-list"><li style="list-style-type:disc">Bitsy</li></ul><ul id="b0d3a903-8cab-4571-bc3b-96a28e305b47" class="bulleted-list"><li style="list-style-type:disc">Buddy</li></ul><ul id="f5f334ed-5d18-4f97-b353-6712db030275" class="bulleted-list"><li style="list-style-type:disc">Calvin</li></ul><ul id="f77410b1-8dde-449c-9f0a-c79d8010dfe4" class="bulleted-list"><li style="list-style-type:disc">Charlie</li></ul><ul id="e95d890f-acf1-4bf2-a7f7-811e07524b55" class="bulleted-list"><li style="list-style-type:disc">Daisy</li></ul><ul id="9068863d-37ef-4c6c-9e10-66c98a83873b" class="bulleted-list"><li style="list-style-type:disc">John</li></ul><ul id="047ea2e9-acce-4fd4-802f-cd5156bb87ca" class="bulleted-list"><li style="list-style-type:disc">Kittie</li></ul><ul id="f5282baf-6dda-41e0-8588-168221f1370d" class="bulleted-list"><li style="list-style-type:disc">Lucky</li></ul><ul id="f6b4db41-f475-4a63-a8a6-cace5d3ca066" class="bulleted-list"><li style="list-style-type:disc">Mike</li></ul><ul id="a8504589-9046-4021-bb34-b37d82594f58" class="bulleted-list"><li style="list-style-type:disc">Monroe</li></ul><ul id="49b46e52-094f-4721-a19e-e448dc68d44c" class="bulleted-list"><li style="list-style-type:disc">Pebbles</li></ul><ul id="ee53f958-f555-4d3f-b976-23bf0db699eb" class="bulleted-list"><li style="list-style-type:disc">Penny</li></ul><ul id="b8702523-f97b-452e-bf1c-451b9c3f73cd" class="bulleted-list"><li style="list-style-type:disc">Puppy</li></ul><ul id="37b298a2-fd4f-41d7-b980-ef88c7fd9360" class="bulleted-list"><li style="list-style-type:disc">Sparky</li></ul><ul id="c65edf93-e451-4ab7-bbd0-1181335e49c0" class="bulleted-list"><li style="list-style-type:disc">Trulte</li></ul><ul id="6223f05c-f313-4bf0-9bea-77c359d16970" class="bulleted-list"><li style="list-style-type:disc">Willow</li></ul></details></li></ul><ul id="29d41eb5-74ca-40e9-9fe3-81d39ade98b8" class="toggle"><li><details open=""><summary>Pit Bull</summary><figure id="12a8f238-6219-800a-acf9-c332420142c1" class="image"><a href="Pit_Bull.png"><img style="width:52px" src="Pit_Bull.png"/></a></figure><ul id="c1b68e2f-8451-45f5-9548-2624a3797dec" class="bulleted-list"><li style="list-style-type:disc">Bubba</li></ul><ul id="4605b5df-00ac-4b3b-bd10-3ef002f35a8b" class="bulleted-list"><li style="list-style-type:disc">Buster</li></ul><ul id="bf29ebdd-7b04-443c-856a-ab7ee7c27464" class="bulleted-list"><li style="list-style-type:disc">Chomps</li></ul><ul id="1a4e090a-9bf1-4b08-9a0c-7472de7e0657" class="bulleted-list"><li style="list-style-type:disc">Dexter</li></ul><ul id="ec9cb108-2ad4-4c48-af45-f95b70e98439" class="bulleted-list"><li style="list-style-type:disc">Doug</li></ul><ul id="31c1562f-1671-4c58-ac87-5078ba20d005" class="bulleted-list"><li style="list-style-type:disc">Ginger</li></ul><ul id="216f9ce6-5149-4a0a-aadf-0cd583718022" class="bulleted-list"><li style="list-style-type:disc">Jazzy</li></ul><ul id="267a947e-99b1-47e5-8718-8f7ddc341d2e" class="bulleted-list"><li style="list-style-type:disc">Keith</li></ul><ul id="196b282b-3cfa-451c-ad32-6ffc2617c5c2" class="bulleted-list"><li style="list-style-type:disc">Kona</li></ul><ul id="967a114a-80cd-433b-a78b-0591d407b735" class="bulleted-list"><li style="list-style-type:disc">Max</li></ul><ul id="08db4405-ddfd-4b5e-8ef9-9ec173d1cf42" class="bulleted-list"><li style="list-style-type:disc">Rex</li></ul><ul id="6bd47ca1-d514-4d1e-80ac-db1381b05a47" class="bulleted-list"><li style="list-style-type:disc">Sampson</li></ul><ul id="1e5e3244-6ecc-42d0-9078-b8b9976b2c76" class="bulleted-list"><li style="list-style-type:disc">Spike</li></ul><ul id="06b0f9f4-1bc1-422f-94d8-95e1256edcd8" class="bulleted-list"><li style="list-style-type:disc">Toshiro</li></ul></details></li></ul><ul id="f6b0e57c-fb4b-489d-9baa-30c928d9943e" class="toggle"><li><details open=""><summary>Beagle</summary><figure id="12a8f238-6219-8026-ab2d-e858cdb18e8d" class="image"><a href="Beagle.png"><img style="width:52px" src="Beagle.png"/></a></figure><ul id="d5a4e5c9-e641-4f37-8dec-43a82817c6f8" class="bulleted-list"><li style="list-style-type:disc">Ali</li></ul><ul id="b584d5fd-635f-4489-89b2-97bec2a9d7ff" class="bulleted-list"><li style="list-style-type:disc">Copper</li></ul><ul id="62b73fda-daaa-4356-848f-4780f181b1c5" class="bulleted-list"><li style="list-style-type:disc">Darwin</li></ul><ul id="9c289785-fa6e-4b3c-bd7e-e7bf8295f88d" class="bulleted-list"><li style="list-style-type:disc">Feena</li></ul><ul id="f71f2308-c89b-4062-b7b6-619d58cb79fe" class="bulleted-list"><li style="list-style-type:disc">Fred</li></ul><ul id="3948b044-41c6-4a95-95a6-917711dd05c7" class="bulleted-list"><li style="list-style-type:disc">Lieselotte</li></ul><ul id="f4016e73-e089-4107-88c6-6c16a7d40376" class="bulleted-list"><li style="list-style-type:disc">Milo</li></ul><ul id="dae9972b-d4d9-4fa4-969e-b4b3a05f3d5b" class="bulleted-list"><li style="list-style-type:disc">Navi</li></ul><ul id="1da85ccc-e0aa-4092-88df-01cd35e656ce" class="bulleted-list"><li style="list-style-type:disc">Odie</li></ul><ul id="ad88fde1-397c-494f-91be-ba102a10d0fc" class="bulleted-list"><li style="list-style-type:disc">Pete</li></ul><ul id="37d053dc-4316-4264-8782-b8c3bfa45e97" class="bulleted-list"><li style="list-style-type:disc">Roxie</li></ul><ul id="800c65e2-e6f3-4f72-9b02-6c1055c16abd" class="bulleted-list"><li style="list-style-type:disc">Wilma</li></ul><ul id="07614df8-039c-4fab-831b-0c6c7f50826c" class="bulleted-list"><li style="list-style-type:disc">Zelda</li></ul></details></li></ul><ul id="80d54904-6f0e-4d6b-8fb9-0bfcea1c39ad" class="toggle"><li><details open=""><summary>Corgi</summary><figure id="12a8f238-6219-80fc-a914-de90f460fdf6" class="image"><a href="Corgi.png"><img style="width:42px" src="Corgi.png"/></a></figure><ul id="7f7f1b76-8a7e-4660-992b-8b0caaf2bab4" class="bulleted-list"><li style="list-style-type:disc">Ammy</li></ul><ul id="e8af4f4b-c0d2-4f9c-801d-520ace076560" class="bulleted-list"><li style="list-style-type:disc">Astro</li></ul><ul id="455d86d4-7f60-47d9-a033-b237f4669c5a" class="bulleted-list"><li style="list-style-type:disc">Baxter</li></ul><ul id="cc0c4a40-5e80-43b7-9f56-c183d8d7bb60" class="bulleted-list"><li style="list-style-type:disc">Bella</li></ul><ul id="22f3e5c6-3aae-4dd5-9f59-f6ccff8e5bbe" class="bulleted-list"><li style="list-style-type:disc">Charles</li></ul><ul id="58540324-fec7-4b5c-90de-de898509c043" class="bulleted-list"><li style="list-style-type:disc">Elizabeth</li></ul><ul id="1af6dedd-6f57-4e36-91a8-49ab6e9e45ba" class="bulleted-list"><li style="list-style-type:disc">Ellie</li></ul><ul id="7d4e17c4-5e13-46bd-8ba4-745a91dc9bb1" class="bulleted-list"><li style="list-style-type:disc">Estelle</li></ul><ul id="91e63545-6087-43c9-a093-d45961c839a6" class="bulleted-list"><li style="list-style-type:disc">Maya</li></ul><ul id="d99df3ae-9b3a-4b2d-b994-8afc97cfcba4" class="bulleted-list"><li style="list-style-type:disc">Oliver</li></ul><ul id="3f89345c-c179-4f7e-8826-a2949883f2e0" class="bulleted-list"><li style="list-style-type:disc">Shino</li></ul><ul id="0df4dade-e8e5-4c8c-a481-084d7e0c9ef8" class="bulleted-list"><li style="list-style-type:disc">Titus</li></ul><ul id="37943547-df5c-4cf8-a553-dec2f12338a8" class="bulleted-list"><li style="list-style-type:disc">Victoria</li></ul><ul id="85b566ae-d3cd-4037-9a9e-0b138b76997e" class="bulleted-list"><li style="list-style-type:disc">Yona</li></ul></details></li></ul><ul id="6d5028bf-4794-40b8-83ac-3bd3b0803d57" class="toggle"><li><details open=""><summary>Dalmatian</summary><figure id="12a8f238-6219-807e-8027-e58e15e77db6" class="image"><a href="Dalmatian.png"><img style="width:54px" src="Dalmatian.png"/></a></figure><ul id="bb4fcb07-a9d7-49f6-b372-a0aab05911df" class="bulleted-list"><li style="list-style-type:disc">Akane</li></ul><ul id="1daeeed2-8043-489c-a06b-2d34ee824608" class="bulleted-list"><li style="list-style-type:disc">Aurora</li></ul><ul id="3fe6d277-99b2-4462-923c-363e08bb68af" class="bulleted-list"><li style="list-style-type:disc">Dotty</li></ul><ul id="fa709a74-ed06-413f-aed6-8fc61ffafde9" class="bulleted-list"><li style="list-style-type:disc">Firebug</li></ul><ul id="cdacaad9-f9cc-4152-9ca4-17a9f1e19261" class="bulleted-list"><li style="list-style-type:disc">Lucky</li></ul><ul id="5dcaef95-911f-4f28-9619-4953741d987b" class="bulleted-list"><li style="list-style-type:disc">Marshall</li></ul><ul id="2aa88428-a21e-4323-bc45-080ebe224d9a" class="bulleted-list"><li style="list-style-type:disc">Mizore</li></ul><ul id="d1d0e527-c64d-4817-81ec-cb0bdd094473" class="bulleted-list"><li style="list-style-type:disc">Polka</li></ul><ul id="af33d1af-3a9f-486e-9994-b44da4fd3a5c" class="bulleted-list"><li style="list-style-type:disc">Pongo</li></ul><ul id="37d14be6-ebf7-43ae-8e5a-758ad93e90ab" class="bulleted-list"><li style="list-style-type:disc">Sapphire</li></ul><ul id="7209fb38-ab65-4073-ab61-1f0b23d73542" class="bulleted-list"><li style="list-style-type:disc">Splat</li></ul><ul id="eb3143d4-4252-430d-bb5b-1068ddf92b00" class="bulleted-list"><li style="list-style-type:disc">Spot</li></ul><ul id="a517c2e9-0af5-404b-ace9-0a8b29117c75" class="bulleted-list"><li style="list-style-type:disc">Suzy</li></ul></details></li></ul><ul id="e09a24a1-f928-4181-b4b6-b5e334ade0fe" class="toggle"><li><details open=""><summary>Husky</summary><figure id="12a8f238-6219-8057-8da6-fa1ad15d4ea5" class="image"><a href="Husky.png"><img style="width:50px" src="Husky.png"/></a></figure><ul id="ddf61e0d-9f66-4f7a-a208-ee968c707a5f" class="bulleted-list"><li style="list-style-type:disc">Balto</li></ul><ul id="58a15e8d-fbf1-4926-952c-12e556d13ba6" class="bulleted-list"><li style="list-style-type:disc">Bullet</li></ul><ul id="e990f2b2-e476-4b75-af0c-f6078d33e02e" class="bulleted-list"><li style="list-style-type:disc">Comet</li></ul><ul id="920fc25c-49ac-4d30-a64f-41345e35a47e" class="bulleted-list"><li style="list-style-type:disc">Dogi</li></ul><ul id="0af6eba8-d081-43d5-af8e-02dc9c99e1e5" class="bulleted-list"><li style="list-style-type:disc">Hachiko</li></ul><ul id="827e1872-1707-486a-ac0c-250e64cb2e6e" class="bulleted-list"><li style="list-style-type:disc">Indiana</li></ul><ul id="19508c0b-69fe-4cbf-a1d4-82c9ad7b2db9" class="bulleted-list"><li style="list-style-type:disc">Ingrid</li></ul><ul id="832208ad-382b-4b16-8b9b-84747ec30557" class="bulleted-list"><li style="list-style-type:disc">Kayla</li></ul><ul id="a8a7387d-cf0c-441a-bad2-a71ff5e090c6" class="bulleted-list"><li style="list-style-type:disc">Miska</li></ul><ul id="a19b012a-f748-4105-bb52-ba76da0597f7" class="bulleted-list"><li style="list-style-type:disc">Rosalie</li></ul><ul id="0538086f-01a2-4de5-a352-cc2412a641d4" class="bulleted-list"><li style="list-style-type:disc">Sasha</li></ul><ul id="f7212f87-b0a8-480f-9c79-c67311fb77c0" class="bulleted-list"><li style="list-style-type:disc">Sky</li></ul><ul id="ae7ea65e-7001-4a20-b283-32d101d0dd1e" class="bulleted-list"><li style="list-style-type:disc">Snowdog</li></ul><ul id="632fc78a-85e5-4cea-acfc-9044425e67a6" class="bulleted-list"><li style="list-style-type:disc">Sven</li></ul><ul id="4b8ce732-0293-4ce9-a3f7-82c86cb24b89" class="bulleted-list"><li style="list-style-type:disc">Toya</li></ul><ul id="538e61d0-a5fc-418b-b9f1-480f75bd04ca" class="bulleted-list"><li style="list-style-type:disc">Zoey</li></ul></details></li></ul></details></li></ul><ul id="6b4d94f6-ec31-4ebc-add5-23a02a19108e" class="toggle"><li><details open=""><summary>Town Bunnies</summary><figure id="12a8f238-6219-8004-b524-d682851db5cc" class="image"><a href="Town_Bunny.gif"><img style="width:28px" src="Town_Bunny.gif"/></a></figure><ul id="765bbab3-953e-4fcb-a84d-26f874bc2aed" class="toggle"><li><details open=""><summary>White</summary><figure id="12a8f238-6219-800f-aa95-d9a824e89698" class="image"><a href="White_Bunny.png"><img style="width:28px" src="White_Bunny.png"/></a></figure><ul id="4bf49442-35f1-4278-9344-27fd0ca690b2" class="bulleted-list"><li style="list-style-type:disc">Alice</li></ul><ul id="de23c05c-b7f4-41df-832c-c329866cd388" class="bulleted-list"><li style="list-style-type:disc">Ben</li></ul><ul id="957a7234-047c-4bc4-aeba-ce0c315ebdd8" class="bulleted-list"><li style="list-style-type:disc">Bunnicula</li></ul><ul id="6a377afe-0f97-4d5e-9f95-d9e776314d70" class="bulleted-list"><li style="list-style-type:disc">Donnie</li></ul><ul id="550c1297-ceb9-4c3f-96f5-730093e9af22" class="bulleted-list"><li style="list-style-type:disc">Ears</li></ul><ul id="e8b1f6f8-6542-4328-a312-16259ea6021f" class="bulleted-list"><li style="list-style-type:disc">Inaba</li></ul><ul id="b5299c6d-aede-43be-9bf5-9fb05025cb11" class="bulleted-list"><li style="list-style-type:disc">Lilia</li></ul><ul id="a7b1c3a6-2585-45ee-8475-98705aff8b2a" class="bulleted-list"><li style="list-style-type:disc">Lily</li></ul><ul id="5b554320-fcfe-444a-bc3a-9236e8dba595" class="bulleted-list"><li style="list-style-type:disc">Lisette</li></ul><ul id="0d3d007c-5f07-4d88-bf46-cbfc6e350609" class="bulleted-list"><li style="list-style-type:disc">Presto</li></ul><ul id="05f70947-dcda-4fb9-a042-ea46bb03fd9a" class="bulleted-list"><li style="list-style-type:disc">Roger</li></ul><ul id="3b3ebd86-9c27-4fa6-b9c0-0883c766dd78" class="bulleted-list"><li style="list-style-type:disc">Shion</li></ul><ul id="f6e59453-17f6-44e6-8747-0530f0646574" class="bulleted-list"><li style="list-style-type:disc">Shirayuki</li></ul><ul id="4d8d0559-65d8-4611-81b8-e71b92c7202f" class="bulleted-list"><li style="list-style-type:disc">Skippy</li></ul></details></li></ul><ul id="59f8b42f-2ee2-4a19-90ce-222d036a6638" class="toggle"><li><details open=""><summary>Angora</summary><figure id="12a8f238-6219-80fa-ac56-d236fbe533a5" class="image"><a href="Angora_Bunny.png"><img style="width:28px" src="Angora_Bunny.png"/></a></figure><ul id="c4aa3ae9-3544-434f-a987-7887d546caa2" class="bulleted-list"><li style="list-style-type:disc">Babs</li></ul><ul id="2e28255e-343d-40c5-87ea-d493026640b9" class="bulleted-list"><li style="list-style-type:disc">Big B</li></ul><ul id="bc5f3b7b-c15e-4584-a2ea-1d09387710a0" class="bulleted-list"><li style="list-style-type:disc">Breadbuns</li></ul><ul id="85875cf4-2096-4edc-a02a-1c7c2fbf8bed" class="bulleted-list"><li style="list-style-type:disc">Donald</li></ul><ul id="504675de-4430-45bc-a701-8efc4eb177f8" class="bulleted-list"><li style="list-style-type:disc">Fluffy</li></ul><ul id="dd388abc-c060-4357-b8ab-5afb0905adf9" class="bulleted-list"><li style="list-style-type:disc">Greg</li></ul><ul id="d819023f-7936-4bd1-9862-59300d0ad32b" class="bulleted-list"><li style="list-style-type:disc">Loaf</li></ul><ul id="6688e274-9453-4f9c-b18a-ceacf5fd9ea7" class="bulleted-list"><li style="list-style-type:disc">Maximus</li></ul><ul id="1d733582-f9b0-49f0-b538-666dc84cbf53" class="bulleted-list"><li style="list-style-type:disc">Muffin</li></ul><ul id="45171721-e1df-40ac-b6b8-405164b02606" class="bulleted-list"><li style="list-style-type:disc">Pom</li></ul></details></li></ul><ul id="7c6c802f-2537-4143-977c-77bf15fc1468" class="toggle"><li><details open=""><summary>Dutch</summary><figure id="12a8f238-6219-808c-82b7-ffb2396fe462" class="image"><a href="Dutch_Bunny.png"><img style="width:28px" src="Dutch_Bunny.png"/></a></figure><ul id="4dd420d7-6f7a-46ed-b841-1f5957a1bb6d" class="bulleted-list"><li style="list-style-type:disc">Domino</li></ul><ul id="b0600236-b116-4477-b546-3d464dc80d44" class="bulleted-list"><li style="list-style-type:disc">Kaguya</li></ul><ul id="c9bffec4-bd43-4f30-848d-bdc1065b6ec4" class="bulleted-list"><li style="list-style-type:disc">Mono</li></ul><ul id="b3a58d6b-850d-4dc2-a163-bc7304629840" class="bulleted-list"><li style="list-style-type:disc">Olaf</li></ul><ul id="d9fcb29d-507a-4789-ab46-423a36159a0d" class="bulleted-list"><li style="list-style-type:disc">Oreo</li></ul><ul id="8785ae82-fc15-4b49-947a-6fcedf6b8333" class="bulleted-list"><li style="list-style-type:disc">Orin</li></ul><ul id="0d79d9c0-c6d3-4287-9741-6943b093fa8e" class="bulleted-list"><li style="list-style-type:disc">Oz</li></ul><ul id="d010a68f-38c0-491a-a4af-92387bebb5f2" class="bulleted-list"><li style="list-style-type:disc">Panda</li></ul><ul id="a074a30c-3a7c-4678-8393-63f93ba37769" class="bulleted-list"><li style="list-style-type:disc">Pow</li></ul><ul id="395f2ba5-6b6e-44f3-affd-75cd3cc404e2" class="bulleted-list"><li style="list-style-type:disc">Yang</li></ul><ul id="581396c7-5430-4187-a168-4db857436bd0" class="bulleted-list"><li style="list-style-type:disc">Yin</li></ul></details></li></ul><ul id="411fe855-82b5-47ad-b5c9-d23dce6a3b1f" class="toggle"><li><details open=""><summary>Flemish</summary><figure id="12a8f238-6219-8059-9dff-fb3df1fa3f92" class="image"><a href="Flemish_Bunny.png"><img style="width:28px" src="Flemish_Bunny.png"/></a></figure><ul id="4988b20c-593c-4bbe-bc7c-6c3da9e3969a" class="bulleted-list"><li style="list-style-type:disc">Cinnabun</li></ul><ul id="83f6ebdd-d1f6-41b5-a3d7-ec1c0a890174" class="bulleted-list"><li style="list-style-type:disc">Daisy</li></ul><ul id="9350217d-3d60-43e0-82c0-c39ec3097115" class="bulleted-list"><li style="list-style-type:disc">Dusty</li></ul><ul id="d2ad05b8-5f6b-4904-8acf-6c6de41bda82" class="bulleted-list"><li style="list-style-type:disc">Hazel</li></ul><ul id="977d3bae-31bb-4ae4-a098-3917164a4d96" class="bulleted-list"><li style="list-style-type:disc">Honeycomb</li></ul><ul id="f2e1e1f1-dc51-454d-9579-0801746d3f54" class="bulleted-list"><li style="list-style-type:disc">Jazz</li></ul><ul id="05af1a60-f617-49ab-9e87-78d1e17515b9" class="bulleted-list"><li style="list-style-type:disc">Loki</li></ul><ul id="30b0198f-910f-4a25-a3b1-33f0c87b099c" class="bulleted-list"><li style="list-style-type:disc">Peter</li></ul><ul id="e296143d-59a3-4c81-9885-4b4759fed9fa" class="bulleted-list"><li style="list-style-type:disc">Russell</li></ul><ul id="65208af2-2211-4834-b754-012a0e9ac850" class="bulleted-list"><li style="list-style-type:disc">Sunflower</li></ul><ul id="6f340f8f-02e3-4684-b4ca-8e5be6b5c81a" class="bulleted-list"><li style="list-style-type:disc">Thumper</li></ul><ul id="a1ed2e04-d682-4996-911c-deabb9441c56" class="bulleted-list"><li style="list-style-type:disc">Toby</li></ul></details></li></ul><ul id="29724a08-cd59-4ada-adb0-52be07ef19f4" class="toggle"><li><details open=""><summary>Lop</summary><figure id="12a8f238-6219-8058-97b5-e626cfb0ea43" class="image"><a href="Lop_Bunny.png"><img style="width:28px" src="Lop_Bunny.png"/></a></figure><ul id="9632d19f-47c1-412c-b574-64aaea78bc68" class="bulleted-list"><li style="list-style-type:disc">Boof</li></ul><ul id="d2197670-0797-4b6e-9122-b5fe1a73e033" class="bulleted-list"><li style="list-style-type:disc">Bunbun</li></ul><ul id="58eefad5-cc4f-436e-b256-3be484a56df0" class="bulleted-list"><li style="list-style-type:disc">Caerbannog</li></ul><ul id="69ba401b-2424-4e76-9b58-749d8709a706" class="bulleted-list"><li style="list-style-type:disc">Dandy</li></ul><ul id="00f32bce-6295-478f-87c8-132ec74e81ef" class="bulleted-list"><li style="list-style-type:disc">Flappie</li></ul><ul id="f25a19dd-c711-4332-abb4-d4bc5ea2945b" class="bulleted-list"><li style="list-style-type:disc">Flops</li></ul><ul id="834510ca-e22f-4c17-84e8-1146d179d817" class="bulleted-list"><li style="list-style-type:disc">Lola</li></ul><ul id="e9776057-116e-4b85-89a2-c1585ceac47a" class="bulleted-list"><li style="list-style-type:disc">Max</li></ul><ul id="93ad7f70-0481-435e-875a-39e53468fe14" class="bulleted-list"><li style="list-style-type:disc">Mochi</li></ul><ul id="a32c40ab-8330-4d98-9bb6-9bfedb678b1f" class="bulleted-list"><li style="list-style-type:disc">Puff</li></ul><ul id="27fcf4a5-5362-422f-8a51-5cd5ae925d04" class="bulleted-list"><li style="list-style-type:disc">Tyler</li></ul><ul id="4ef455c1-2367-47a7-a13d-0e1e2e71e422" class="bulleted-list"><li style="list-style-type:disc">Veidra</li></ul><ul id="5b16bfad-7385-4438-8bef-bfa8fbee9bef" class="bulleted-list"><li style="list-style-type:disc">Youp</li></ul></details></li></ul><ul id="eff78fce-e837-485f-9942-a60c63a47085" class="toggle"><li><details open=""><summary>Silver</summary><figure id="12a8f238-6219-805e-a896-e6d0264d167b" class="image"><a href="Silver_Bunny.png"><img style="width:26px" src="Silver_Bunny.png"/></a></figure><ul id="1d0c2c4a-71ec-4189-8a92-7783248e7f6f" class="bulleted-list"><li style="list-style-type:disc">Bugz</li></ul><ul id="2dc689be-83e5-4ea1-9bd1-d43665c5a769" class="bulleted-list"><li style="list-style-type:disc">Bunnykins</li></ul><ul id="a87c6ce6-4edd-44fc-b7dd-38b021079ad3" class="bulleted-list"><li style="list-style-type:disc">Bunstar</li></ul><ul id="0eee75a6-2f56-406d-b1da-f106521d7247" class="bulleted-list"><li style="list-style-type:disc">Buster</li></ul><ul id="1a87b779-ebb8-4f99-a86a-3c5484d49c6f" class="bulleted-list"><li style="list-style-type:disc">Chrome</li></ul><ul id="3c9bf1fb-06e1-4a6e-98f2-55f6a928fae8" class="bulleted-list"><li style="list-style-type:disc">Crystal</li></ul><ul id="afe3b883-aea0-4ea6-89e7-edf6a3b08b3e" class="bulleted-list"><li style="list-style-type:disc">Dustbunny</li></ul><ul id="d5b3d518-3551-4420-a1c4-f8728cb157e4" class="bulleted-list"><li style="list-style-type:disc">Dusty</li></ul><ul id="c1615e3a-dea9-44cf-b03a-a8737c2803bc" class="bulleted-list"><li style="list-style-type:disc">Joshua</li></ul><ul id="a7aad68b-0264-4c68-a26f-d385bda1f66f" class="bulleted-list"><li style="list-style-type:disc">Lord</li></ul><ul id="467502c6-e35f-4f56-81d4-d57032fe4127" class="bulleted-list"><li style="list-style-type:disc">Silvine</li></ul><ul id="635886b4-843a-4944-9688-2631c3df5e1c" class="bulleted-list"><li style="list-style-type:disc">Vincent</li></ul><ul id="9ac64c16-6e8b-4eb1-897a-2233e21c7123" class="bulleted-list"><li style="list-style-type:disc">Zach</li></ul></details></li></ul></details></li></ul><ul id="12a8f238-6219-8067-9e1b-f6079656e57b" class="toggle"><li><details open=""><summary>Town Slime</summary><figure id="12a8f238-6219-80b0-be52-d77be40d2a4c" class="image"><a href="Town_Slimes.gif"><img style="width:32px" src="Town_Slimes.gif"/></a></figure><p id="12a8f238-6219-800c-8a53-c40eff1dd5f8" class="">
+</p></details></li></ul></details></li></ul><ul id="5cbc1186-5576-4c37-afba-e845e7850926" class="toggle"><li><details open=""><summary>Town NPCs</summary><table id="40f05577-84af-4dc0-ad33-fcbbcd799fc5" class="simple-table"><tbody><tr id="2ca3c92e-692f-4d23-979f-d24bff3b4b57"><td id="tjuI" class="">NPC</td><td id="Depq" class="" style="width:163.60000610351562px">Mô Tả &amp; Công việc</td><td id="Lp`X" class="">Điều kiện Spawn</td><td id="bqnU" class="">Vũ khí</td><td id="zF}&gt;" class="">Drop khi chết</td></tr><tr id="d63a419c-9c99-4e7a-bb2e-df7514a91555"><td id="tjuI" class="">Guide</td><td id="Depq" class="" style="width:163.60000610351562px">Cho người chơi tips và hướng dẫn chung để gặp các NPCs khác, cung cấp công thức khi đem một vật liệu nhỏ liên quan đến công thức đó</td><td id="Lp`X" class="">Khi người chơi mới bắt đầu ở thế giới mới</td><td id="bqnU" class="">Wooden Bow - Cung Gỗ</td><td id="zF}&gt;" class="">Green Cap</td></tr><tr id="a6e22fdf-b598-49ab-ba2c-463565b6b7fd"><td id="tjuI" class="">Merchant</td><td id="Depq" class="" style="width:163.60000610351562px">Bán những dụng cụ và tiếp tế cơ bản</td><td id="Lp`X" class="">Tất cả người chơi gộp lại cần phải có hơn 50 xu bạc<br/>Thay thế Guide là NPC đầu tiên ở thế giới “Not the bees”<br/></td><td id="bqnU" class="">Throwing Knife - Ném Dao</td><td id="zF}&gt;" class=""></td></tr><tr id="953d0999-b7ca-4125-b2d8-7562f9952404"><td id="tjuI" class="">Nurse</td><td id="Depq" class="" style="width:163.60000610351562px">Người trả xu để hồi máu người chơi và hủy trạng thái bất lợi </td><td id="Lp`X" class="">Người chơi có nhiều hơn 100 máu và có mặt Merchant</td><td id="bqnU" class="">Syringes - <br/>Kim Tiêm<br/></td><td id="zF}&gt;" class=""></td></tr><tr id="9381a4c4-67c9-4a84-96ed-57bed9a67362"><td id="tjuI" class="">Demolitionist</td><td id="Depq" class="" style="width:163.60000610351562px">Bán chất nổ</td><td id="Lp`X" class="">Người chơi có chất nổ trong túi đồ của mình và có mặt Merchant <br/>Thay thế Guide là NPC đầu tiên ở thế giới “For the worthy”<br/></td><td id="bqnU" class="">Grenades -<br/>Lựu Đạn<br/></td><td id="zF}&gt;" class=""></td></tr><tr id="8d61080c-836c-4fc3-983c-4571d8184073"><td id="tjuI" class="">Dye Trader</td><td id="Depq" class="" style="width:163.60000610351562px">Bán Dye Vat crafting station<br/>Người chơi trao đổi Strange Plants để lấy màu nhuộm hiếm<br/></td><td id="Lp`X" class="">Người chơi cần có một món màu nhuộm hoặc bất cứ món đồ gì dùng để ghép màu nhuộm trong túi đồ của mình</td><td id="bqnU" class="">Exotic Scimitar</td><td id="zF}&gt;" class="">Exotic Scimitar</td></tr><tr id="18a5ef47-3ed4-438a-971c-705297551b0d"><td id="tjuI" class="">Angler</td><td id="Depq" class="" style="width:163.60000610351562px">Giao các nhiệm vụ câu cá và tặng phần thưởng khi hoàn thành các nhiệm vụ đó</td><td id="Lp`X" class="">Tìm thấy và nói chuyện ở biome Ocean (đại dương)</td><td id="bqnU" class="">Frost Daggerfish - Tạm dich: Cá dao găm băng giá</td><td id="zF}&gt;" class=""></td></tr><tr id="0f4ee1e7-f39a-4c94-965a-d42311fd8a88"><td id="tjuI" class="">Zoologist</td><td id="Depq" class="" style="width:163.60000610351562px">Bán vanity, mount, pet và critter-themed items </td><td id="Lp`X" class="">Ít nhất 10% Bestiary đã được lấp đầy</td><td id="bqnU" class="">Claws -<br/>Móng Vuốt<br/></td><td id="zF}&gt;" class=""></td></tr><tr id="3aca3f09-b0f3-4f69-9d90-eec0a8667fbb"><td id="tjuI" class="">Dryad</td><td id="Depq" class="" style="width:163.60000610351562px">Bán các vật phẩm Nature / Corruption / Crimson và có thể biết độ tha hóa và biến đổi trong thế giới</td><td id="Lp`X" class="">Đánh bại The Eye of Cthulhu, Eater of Worlds / Brain of Cthulhu, hoặc Skeletron</td><td id="bqnU" class="">Dryad’s Blessing - <br/>Phước lành của Dryad<br/></td><td id="zF}&gt;" class=""></td></tr><tr id="51781432-e671-445e-89aa-1e027b02a027"><td id="tjuI" class="">Painter</td><td id="Depq" class="" style="width:163.60000610351562px">Bán màu, dụng cụ vẽ màu và tranh vẽ</td><td id="Lp`X" class="">4-8 town NPCs khác cũng đang ở cùng thế giới</td><td id="bqnU" class="">Paintball Gun -<br/>Súng bắn sơn<br/></td><td id="zF}&gt;" class="">Paintball Gun<br/>Jim’s Cap<br/></td></tr><tr id="128dd1a7-a0b9-47f0-b5f9-d8c7159252be"><td id="tjuI" class="">Golfer</td><td id="Depq" class="" style="width:163.60000610351562px">Bán Golf Clubs, Balls và các vật dụng golf khác</td><td id="Lp`X" class="">Tìm thấy và nói chuyện ở Underground Desert</td><td id="bqnU" class="">Golf Balls -<br/>Bóng Golf<br/></td><td id="zF}&gt;" class=""></td></tr><tr id="271e8406-6016-405b-b1db-fa8d3fc24ef1"><td id="tjuI" class="">Arms Dealer</td><td id="Depq" class="" style="width:163.60000610351562px">Bán súng, đạn, và các loại đạn dược khác</td><td id="Lp`X" class="">Người chơi có đạn hoặc súng trong túi đồ</td><td id="bqnU" class="">Flintlock Pistol</td><td id="zF}&gt;" class=""></td></tr><tr id="e6c1bb2a-322f-42c0-bfcf-e9602a0d508c"><td id="tjuI" class="">Tavernkeep</td><td id="Depq" class="" style="width:163.60000610351562px">Bán các vật phẩm triệu hồi và giúp chiến đấu lại Old One’s Army, đa số dùng để đổi Defender Medals</td><td id="Lp`X" class="">Tìm thấy và nói chuyện sau khi đánh bại Eater of Worlds hoặc Brain of Cthulhu</td><td id="bqnU" class="">Ale</td><td id="zF}&gt;" class="">Ale Tosser</td></tr><tr id="4f23818b-bcbc-49d2-a020-60c48fb6cbcf"><td id="tjuI" class="">Stylist</td><td id="Depq" class="" style="width:163.60000610351562px">Có thể đổi dáng kiểu tóc người chơi và bán thuốc nhuộm tóc</td><td id="Lp`X" class="">Tìm thấy và nói chuyện ở trong một ổ nhện Spider Nest</td><td id="bqnU" class="">Stylish Scissors</td><td id="zF}&gt;" class="">Stylish Scissors</td></tr><tr id="8c44c880-92ce-4177-9fcf-07ad267a40cf"><td id="tjuI" class="">Goblin Tinkerer</td><td id="Depq" class="" style="width:163.60000610351562px">Bán các vật phẩm như Tinkerer’s Workshop</td><td id="Lp`X" class="">Tìm thấy và nói chuyện ở Cavern layer sau khi đánh bại Goblin Invasion. Chủ yếu cụ thể là ở Dungeon</td><td id="bqnU" class="">Spiky Balls</td><td id="zF}&gt;" class=""></td></tr><tr id="c0ea3fac-8797-438f-811d-5d74f0986170"><td id="tjuI" class="">Witch Doctor</td><td id="Depq" class="" style="width:163.60000610351562px">Bán Blowgun, Imbuing Station, các dụng cụ triệu hồi, Fountains và Leaf Wings</td><td id="Lp`X" class="">Sau khi đánh bại Queen Bee</td><td id="bqnU" class="">Blowgun</td><td id="zF}&gt;" class=""></td></tr><tr id="3d5bd2d8-2751-48d3-9a4b-4ccaf8c48a7c"><td id="tjuI" class="">Clothier</td><td id="Depq" class="" style="width:163.60000610351562px">Bán các vật phẩm vanity, bao gồm Familiar set</td><td id="Lp`X" class="">Sau khi đánh bại Skeletron</td><td id="bqnU" class="">Books of Skulls</td><td id="zF}&gt;" class="">Red Hat</td></tr><tr id="73aecd56-ef10-426c-bb9a-96a41f57ae52"><td id="tjuI" class="">Mechanic</td><td id="Depq" class="" style="width:163.60000610351562px">Bán Wrench Wire và các vật phẩm liên quan đến kĩ sư</td><td id="Lp`X" class="">Tìm thấy và nói chuyện ở Dungeon</td><td id="bqnU" class="">Combat Wrench</td><td id="zF}&gt;" class="">Combat Wrench</td></tr><tr id="410d6fad-776b-4452-848d-7a2c2642a620"><td id="tjuI" class="">Party Girl</td><td id="Depq" class="" style="width:163.60000610351562px">Bán các vật phẩm trang trọng mà có khả năng tạo ra những hiệu ứng đầy màu sắc</td><td id="Lp`X" class="">1/40 tỉ lệ spawn<br/>Thay thế the Guide ở đầu thế giới “Drunk world”<br/></td><td id="bqnU" class="">Happy Grenade -<br/>Lưu đạn hạnh phúc<br/></td><td id="zF}&gt;" class="">Happy Grenade</td></tr></tbody></table></details></li></ul><p id="eac42f35-3803-4b4b-9952-9c892060ddb3" class="">
+</p><p id="cb874ced-a7e5-4230-b0d9-55690e46e74d" class="">
+</p><p id="19347a1b-b0d5-4739-ab91-2c916627fa1f" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
